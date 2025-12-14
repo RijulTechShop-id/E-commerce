@@ -1,764 +1,929 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id" dir="ltr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TechHub — Premium Technology Store</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            primary: '#1e40af',
-            secondary: '#0ea5e9',
-            accent: '#8b5cf6',
-          }
-        }
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MobileX — Toko Resmi Handphone Premium: iPhone, Samsung Galaxy, Google Pixel & lebih. Garansi Resmi, Gratis Ongkir, COD." />
+  <title>MobileX | Premium Smartphone Store</title>
+  
+  <!-- Google Fonts: Inter (UI) + Montserrat (Headings) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome (Free CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <style>
+    /* ===== GLOBAL RESET & VARIABLES ===== */
+    :root {
+      --primary: #007AFF;
+      --primary-dark: #0062cc;
+      --secondary: #ff2d55;
+      --dark: #0f0f0f;
+      --darker: #080808;
+      --light: #ffffff;
+      --gray-100: #f5f5f7;
+      --gray-200: #e5e5ea;
+      --gray-600: #6e6e73;
+      --gray-800: #2c2c2e;
+      --radius: 16px;
+      --shadow-sm: 0 2px 12px rgba(0,0,0,0.05);
+      --shadow-md: 0 8px 30px rgba(0,0,0,0.12);
+      --shadow-lg: 0 20px 50px rgba(0,0,0,0.25);
+      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--gray-100);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      outline: none;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+    .btn-outline:hover {
+      background: rgba(0, 122, 255, 0.05);
+    }
+
+    /* ===== LAYOUT ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(255, 255, 255, 0.85);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      transition: var(--transition);
+    }
+
+    .header-scrolled {
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 28px;
+      color: var(--dark);
+      text-decoration: none;
+    }
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gray-800);
+      font-weight: 600;
+      font-size: 16px;
+      position: relative;
+      padding: 6px 0;
+    }
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .theme-toggle {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: var(--gray-600);
+      transition: var(--transition);
+    }
+    .theme-toggle:hover {
+      color: var(--primary);
+    }
+    .cart-icon {
+      position: relative;
+    }
+    .cart-badge {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: var(--secondary);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 160px 0 100px;
+      background: linear-gradient(135deg, #f8f9ff 0%, #eef2ff 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,122,255,0.08) 0%, transparent 70%);
+      z-index: -1;
+    }
+    .hero-content {
+      max-width: 650px;
+      margin-bottom: 60px;
+    }
+    .hero h1 {
+      font-size: 56px;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      color: var(--darker);
+    }
+    .hero p {
+      font-size: 20px;
+      color: var(--gray-600);
+      margin-bottom: 32px;
+      max-width: 600px;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+    }
+
+    .hero-device {
+      position: relative;
+      text-align: center;
+    }
+    .hero-device img {
+      max-width: 500px;
+      margin: 0 auto;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
+    }
+
+    /* ===== CATEGORIES ===== */
+    .section {
+      padding: 100px 0;
+    }
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 60px;
+    }
+    .section-header h2 {
+      font-size: 42px;
+      margin-bottom: 16px;
+      color: var(--darker);
+    }
+    .section-header p {
+      font-size: 18px;
+      color: var(--gray-600);
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .category-card {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .category-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-md);
+    }
+    .category-img {
+      height: 200px;
+      overflow: hidden;
+    }
+    .category-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    .category-card:hover .category-img img {
+      transform: scale(1.05);
+    }
+    .category-content {
+      padding: 24px;
+      text-align: center;
+    }
+    .category-content h3 {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    .category-content p {
+      color: var(--gray-600);
+      font-size: 15px;
+    }
+
+    /* ===== FEATURED PRODUCTS ===== */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+    }
+    .product-card {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+    }
+    .product-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: var(--secondary);
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      z-index: 2;
+    }
+    .product-img {
+      position: relative;
+      height: 240px;
+      overflow: hidden;
+    }
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 24px;
+      transition: var(--transition);
+    }
+    .product-card:hover .product-img img {
+      transform: scale(1.03);
+    }
+    .product-info {
+      padding: 24px;
+    }
+    .product-info h3 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .price {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .rating {
+      color: #ffb400;
+      font-size: 14px;
+    }
+    .product-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    /* ===== WHY CHOOSE US ===== */
+    .features {
+      background: var(--dark);
+      color: white;
+    }
+    .features .section-header h2,
+    .features .section-header p {
+      color: white;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+    }
+    .feature-card {
+      text-align: center;
+      padding: 40px 32px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      transition: var(--transition);
+    }
+    .feature-card:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-6px);
+    }
+    .feature-icon {
+      width: 72px;
+      height: 72px;
+      background: rgba(0,122,255,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 28px;
+      color: var(--primary);
+    }
+    .feature-card h3 {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+    .feature-card p {
+      color: #a0a0a5;
+      font-size: 16px;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials {
+      background: linear-gradient(to bottom, white 0%, #f8f9ff 100%);
+    }
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 32px;
+      justify-content: center;
+    }
+    .testimonial-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 20px;
+      left: 24px;
+      font-size: 80px;
+      font-family: serif;
+      color: rgba(0,0,0,0.05);
+      line-height: 1;
+    }
+    .testimonial-content {
+      font-size: 18px;
+      font-style: italic;
+      margin-bottom: 24px;
+      color: var(--gray-800);
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+    }
+    .author-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 16px;
+    }
+    .author-info h4 {
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+    .author-info p {
+      color: var(--gray-600);
+      font-size: 15px;
+    }
+
+    /* ===== CTA ===== */
+    .cta {
+      background: linear-gradient(135deg, var(--primary) 0%, #0052cc 100%);
+      color: white;
+      text-align: center;
+      padding: 80px 0;
+    }
+    .cta h2 {
+      font-size: 42px;
+      margin-bottom: 24px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta p {
+      font-size: 20px;
+      max-width: 600px;
+      margin: 0 auto 32px;
+      opacity: 0.9;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--darker);
+      color: #a0a0a5;
+      padding: 80px 0 40px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 60px;
+    }
+    .footer-col h4 {
+      color: white;
+      font-size: 18px;
+      margin-bottom: 24px;
+      font-weight: 700;
+    }
+    .footer-links {
+      list-style: none;
+    }
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    .footer-links a {
+      color: #a0a0a5;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .footer-links a:hover {
+      color: white;
+    }
+    .copyright {
+      text-align: center;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      font-size: 14px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .hero {
+        text-align: center;
+        padding: 140px 0 60px;
+      }
+      .hero-content {
+        margin: 0 auto 40px;
+      }
+      .hero-btns {
+        justify-content: center;
+      }
+      .hero-device {
+        margin-top: 40px;
+      }
+      .hero h1 {
+        font-size: 42px;
       }
     }
-  </script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-    body { font-family: 'Inter', sans-serif; }
-    .fade-in { animation: fadeIn 0.4s ease-out; }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .product-image {
-      transition: transform 0.4s ease;
-    }
-    .product-card:hover .product-image { transform: scale(1.03); }
-    .loading {
-      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-      background-size: 200% 100%;
-      animation: shimmer 1.5s infinite;
-    }
-    @keyframes shimmer {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
+
+    @media (max-width: 600px) {
+      .navbar {
+        flex-wrap: wrap;
+      }
+      .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        margin-top: 16px;
+      }
+      .hero h1 {
+        font-size: 36px;
+      }
+      .hero-btns {
+        flex-wrap: wrap;
+      }
+      .section-header h2 {
+        font-size: 32px;
+      }
     }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200 min-h-screen transition-colors duration-300">
+<body>
+
   <!-- Header -->
-  <header class="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <div class="flex items-center space-x-4">
-          <div class="flex items-center space-x-2">
-            <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-              <span class="text-white font-bold text-lg">T</span>
-            </div>
-            <span class="text-xl font-bold text-gray-800 dark:text-white">TechHub</span>
-          </div>
-          <nav class="hidden md:flex space-x-6">
-            <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">Home</a>
-            <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">Shop</a>
-            <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">Deals</a>
-            <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium">Support</a>
-          </nav>
+  <header id="header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="#" class="logo">Mobile<span>X</span></a>
+        <div class="nav-links">
+          <a href="#products">Produk</a>
+          <a href="#categories">Kategori</a>
+          <a href="#features">Keunggulan</a>
+          <a href="#testimonials">Ulasan</a>
+          <a href="#contact">Bantuan</a>
         </div>
-
-        <div class="flex items-center space-x-4">
-          <!-- Dark Mode Toggle -->
-          <button id="darkModeToggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
-            <svg id="sunIcon" class="w-5 h-5 text-yellow-500 hidden" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
-            </svg>
-            <svg id="moonIcon" class="w-5 h-5 text-gray-700 dark:text-gray-300" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-            </svg>
+        <div class="nav-actions">
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+            <i class="fas fa-moon"></i>
           </button>
-
-          <div class="relative hidden md:block">
-            <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-            </svg>
-            <input
-              type="text"
-              id="searchInput"
-              placeholder="Search gadgets..."
-              class="pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent w-64"
-            />
-          </div>
-
-          <button id="filterBtn" class="p-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 md:hidden">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path>
-            </svg>
-          </button>
-
-          <button id="cartBtn" class="relative p-2 text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-            </svg>
-            <span id="cartCount" class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
-          </button>
+          <a href="#" class="cart-icon" aria-label="Keranjang belanja">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="cart-badge">3</span>
+          </a>
         </div>
-      </div>
+      </nav>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-4xl md:text-6xl font-bold mb-4">Cutting-Edge Tech, Delivered Fast</h1>
-      <p class="text-xl md:text-2xl mb-8 opacity-90">Premium laptops, gadgets & accessories — tested, trusted, and tech-forward.</p>
-      <button onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 dark:hover:bg-gray-200 transition-colors">
-        Shop Now
-      </button>
-    </div>
-  </section>
-
-  <!-- Category Filter -->
-  <section class="py-8 bg-white dark:bg-gray-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-wrap justify-center gap-2 md:gap-4" id="categoryFilters">
-        <!-- Categories will be injected -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Mobile Search -->
-  <div class="md:hidden px-4 py-3 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
-    <div class="relative">
-      <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-      </svg>
-      <input
-        type="text"
-        id="mobileSearchInput"
-        placeholder="Search gadgets..."
-        class="pl-10 pr-4 py-3 w-full border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-      />
-    </div>
-  </div>
-
-  <!-- Products Grid -->
-  <section id="products" class="py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6" id="productsGrid">
-        <!-- Products loaded by JS -->
-      </div>
-      <div id="emptyState" class="hidden text-center py-12">
-        <div class="text-6xl mb-4">🔍</div>
-        <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">No products found</h3>
-        <p class="text-gray-600 dark:text-gray-300 mb-4">Try adjusting your search or filter criteria</p>
-        <button onclick="clearFilters()" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium">
-          Clear Filters
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Product Detail Modal -->
-  <div id="productModal" class="fixed inset-0 bg-black bg-opacity-70 z-50 hidden items-center justify-center p-4">
-    <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto fade-in">
-      <div class="p-6 border-b border-gray-200 dark:border-gray-700 flex justify-between items-start">
-        <h2 id="modalTitle" class="text-2xl font-bold text-gray-800 dark:text-white"></h2>
-        <button id="closeModalBtn" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700">
-          <svg class="w-6 h-6 text-gray-500 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-      </div>
-      <div id="modalContent" class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Image -->
-        <div class="flex justify-center">
-          <img id="modalImage" src="" alt="" class="w-full max-w-xs h-64 object-contain">
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Smartphone Premium, Dikirim Langsung ke Tangan Anda</h1>
+        <p>Temukan koleksi terbaru iPhone, Samsung Galaxy, dan Google Pixel dengan garansi resmi, bebas ongkir, dan cicilan 0%.</p>
+        <div class="hero-btns">
+          <a href="#products" class="btn btn-primary">Lihat Semua Produk</a>
+          <a href="#categories" class="btn btn-outline">Jelajahi Kategori</a>
         </div>
-        <!-- Info -->
-        <div>
-          <div id="modalRating" class="flex items-center mb-3"></div>
-          <p id="modalDescription" class="text-gray-600 dark:text-gray-300 mb-4"></p>
-          
-          <div class="mb-4">
-            <span id="modalPrice" class="text-3xl font-bold text-blue-600 dark:text-blue-400"></span>
-            <span id="modalOriginalPrice" class="text-gray-500 dark:text-gray-400 line-through ml-2"></span>
-          </div>
+      </div>
+      <div class="hero-device">
+        <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=500&h=500&q=80" alt="iPhone 15 Pro Max di atas meja kayu">
+      </div>
+    </div>
+  </section>
 
-          <div class="mb-4">
-            <label class="block text-sm font-medium mb-2">Quantity</label>
-            <div class="flex items-center space-x-2">
-              <button id="modalDec" class="w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
-                </svg>
-              </button>
-              <span id="modalQty" class="w-12 text-center font-medium">1</span>
-              <button id="modalInc" class="w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                </svg>
-              </button>
+  <!-- Categories -->
+  <section class="section" id="categories">
+    <div class="container">
+      <div class="section-header">
+        <h2>Kategori Utama</h2>
+        <p>Pilih berdasarkan kebutuhan dan preferensi Anda.</p>
+      </div>
+      <div class="category-grid">
+        <div class="category-card">
+          <div class="category-img">
+            <img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?auto=format&fit=crop&w=600&h=400&q=80" alt="Smartphone Premium">
+          </div>
+          <div class="category-content">
+            <h3>Premium Flagship</h3>
+            <p>Performa tertinggi & kamera profesional</p>
+          </div>
+        </div>
+        <div class="category-card">
+          <div class="category-img">
+            <img src="https://images.unsplash.com/photo-1621762001935-2da0e147e11f?auto=format&fit=crop&w=600&h=400&q=80" alt="Smartphone Mid-Range">
+          </div>
+          <div class="category-content">
+            <h3>Mid-Range Unggulan</h3>
+            <p>Fitur lengkap, harga terjangkau</p>
+          </div>
+        </div>
+        <div class="category-card">
+          <div class="category-img">
+            <img src="https://images.unsplash.com/photo-1582481405434-295f0e9e963a?auto=format&fit=crop&w=600&h=400&q=80" alt="Aksesoris">
+          </div>
+          <div class="category-content">
+            <h3>Aksesoris & Wearable</h3>
+            <p>Casing, charger, earphone & smartwatch</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="section" id="products" style="background: #f8f9ff;">
+    <div class="container">
+      <div class="section-header">
+        <h2>Produk Unggulan</h2>
+        <p>Best seller minggu ini — stok terbatas!</p>
+      </div>
+      <div class="products-grid">
+        <!-- Product 1 -->
+        <div class="product-card">
+          <div class="product-img">
+            <span class="product-badge">Baru</span>
+            <img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=300&h=300&q=80" alt="iPhone 15 Pro">
+          </div>
+          <div class="product-info">
+            <h3>iPhone 15 Pro</h3>
+            <div class="product-meta">
+              <span class="price">Rp 18.999.000</span>
+              <span class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                (142)
+              </span>
+            </div>
+            <div class="product-actions">
+              <a href="#" class="btn btn-primary" style="flex:1; font-size:15px;">Beli Sekarang</a>
             </div>
           </div>
+        </div>
 
-          <div class="flex space-x-3 mb-4">
-            <button id="modalAddToCart" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-medium flex items-center justify-center">
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-              </svg>
-              Add to Cart
-            </button>
-            <button id="modalFavorite" class="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors">
-              <svg id="modalHeartIcon" class="w-6 h-6 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-              </svg>
-            </button>
+        <!-- Product 2 -->
+        <div class="product-card">
+          <div class="product-img">
+            <img src="https://images.unsplash.com/photo-1621498203717-a60d0f47f9a9?auto=format&fit=crop&w=300&h=300&q=80" alt="Samsung Galaxy S24 Ultra">
           </div>
+          <div class="product-info">
+            <h3>Samsung S24 Ultra</h3>
+            <div class="product-meta">
+              <span class="price">Rp 17.499.000</span>
+              <span class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                (98)
+              </span>
+            </div>
+            <div class="product-actions">
+              <a href="#" class="btn btn-primary" style="flex:1; font-size:15px;">Beli Sekarang</a>
+            </div>
+          </div>
+        </div>
 
-          <div class="border-t border-gray-200 dark:border-gray-700 pt-4">
-            <h3 class="font-bold mb-2">Key Specs</h3>
-            <ul id="modalSpecs" class="space-y-1 text-sm text-gray-600 dark:text-gray-300"></ul>
+        <!-- Product 3 -->
+        <div class="product-card">
+          <div class="product-img">
+            <span class="product-badge">Diskon</span>
+            <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=300&h=300&q=80" alt="Google Pixel 8 Pro">
+          </div>
+          <div class="product-info">
+            <h3>Google Pixel 8 Pro</h3>
+            <div class="product-meta">
+              <span class="price">Rp 15.299.000</span>
+              <span class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+                (63)
+              </span>
+            </div>
+            <div class="product-actions">
+              <a href="#" class="btn btn-primary" style="flex:1; font-size:15px;">Beli Sekarang</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Shopping Cart Modal -->
-  <div id="cartModal" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden items-center justify-end">
-    <div class="bg-white dark:bg-gray-800 w-full max-w-md h-full overflow-y-auto">
-      <div class="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
-        <h2 class="text-xl font-bold text-gray-800 dark:text-white">Your Cart (<span id="cartItemCount">0</span>)</h2>
-        <button id="closeCartBtn" class="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
-          <svg class="w-6 h-6 text-gray-500 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
+  <!-- Why Choose Us -->
+  <section class="section features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <h2>Mengapa Pelanggan Memilih MobileX?</h2>
+        <p>Komitmen kami: kualitas, kecepatan, dan kepercayaan.</p>
       </div>
+      <div class="feature-grid">
 
-      <div id="cartEmpty" class="p-8 text-center">
-        <div class="text-6xl mb-4">🛒</div>
-        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">Your cart is empty</h3>
-        <p class="text-gray-600 dark:text-gray-300 mb-4">Add some tech gear to get started!</p>
-        <button id="continueShoppingBtn" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium">
-          Continue Shopping
-        </button>
-      </div>
-
-      <div id="cartItems" class="divide-y divide-gray-200 dark:divide-gray-700 hidden">
-        <!-- Cart items -->
-      </div>
-
-      <div id="cartFooter" class="p-6 border-t border-gray-200 dark:border-gray-700 hidden">
-        <div class="flex justify-between items-center mb-4">
-          <span class="text-lg font-bold text-gray-800 dark:text-white">Total:</span>
-          <span id="cartTotal" class="text-2xl font-bold text-blue-600 dark:text-blue-400">$0.00</span>
+          <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Garansi Resmi 2 Tahun</h3>
+          <p>Semua produk dilengkapi garansi distributor resmi Indonesia.</p>
         </div>
-        <button class="w-full bg-blue-500 hover:bg-blue-600 text-white py-4 rounded-lg font-bold text-lg transition-colors">
-          Proceed to Checkout
-        </button>
-        <button id="continueShoppingBtn2" class="w-full mt-3 py-3 text-gray-600 dark:text-gray-300 font-medium hover:text-gray-800 dark:hover:text-gray-100">
-          Continue Shopping
-        </button>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-truck"></i>
+          </div>
+          <h3>Pengiriman Kilat 1 Hari</h3>
+          <p>Gratis ongkir ke seluruh Indonesia. COD tersedia.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-credit-card"></i>
+          </div>
+          <h3>Cicilan 0% hingga 24 Bulan</h3>
+          <p>Kerja sama dengan 15+ bank terkemuka.</p>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <h2>Ulasan Pelanggan</h2>
+        <p>Lebih dari 12.500+ pelanggan puas sejak 2020.</p>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <p class="testimonial-content">Pengemasan sangat rapi, barang original 100%, dan CS-nya responsif banget. Langsung jadi langganan!</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <img src="https://i.pravatar.cc/100?img=1" alt="Budi Santoso">
+            </div>
+            <div class="author-info">
+              <h4>Budi Santoso</h4>
+              <p>Jakarta Selatan</p>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-content">Barang datang lebih cepat dari estimasi. Bonus casing-nya keren juga. Sangat direkomendasikan!</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <img src="https://i.pravatar.cc/100?img=5" alt="Siti Rahayu">
+            </div>
+            <div class="author-info">
+              <h4>Siti Rahayu</h4>
+              <p>Bandung</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container">
+      <h2>Siap Upgrade Pengalaman Smartphone Anda?</h2>
+      <p>Join 50.000+ pengguna yang telah menikmati kecepatan, keamanan, dan layanan premium dari MobileX.</p>
+      <a href="#products" class="btn btn-primary" style="background: white; color: var(--primary); font-weight: 700;">Mulai Belanja Sekarang</a>
+    </div>
+  </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-800 text-gray-300 py-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-        <div>
-          <div class="flex items-center space-x-2 mb-4">
-            <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-              <span class="text-white font-bold text-lg">T</span>
-            </div>
-            <span class="text-xl font-bold text-white">TechHub</span>
-          </div>
-          <p class="text-gray-400">
-            Your trusted destination for premium tech — from flagship smartphones to workstation laptops and smart home gear.
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>MobileX</h4>
+          <p style="color:#a0a0a5; margin-top:16px; max-width:280px;">
+            Toko handphone premium dengan layanan terbaik sejak 2020. Resmi, aman, dan terpercaya.
           </p>
         </div>
-        <div>
-          <h3 class="font-bold text-lg text-white mb-4">Quick Links</h3>
-          <ul class="space-y-2">
-            <li><a href="#" class="hover:text-white">Home</a></li>
-            <li><a href="#" class="hover:text-white">Shop All</a></li>
-            <li><a href="#" class="hover:text-white">Deals & Offers</a></li>
-            <li><a href="#" class="hover:text-white">Tech Support</a></li>
+        <div class="footer-col">
+          <h4>Produk</h4>
+          <ul class="footer-links">
+            <li><a href="#">iPhone</a></li>
+            <li><a href="#">Samsung</a></li>
+            <li><a href="#">Google Pixel</a></li>
+            <li><a href="#">Xiaomi</a></li>
+            <li><a href="#">Aksesoris</a></li>
           </ul>
         </div>
-        <div>
-          <h3 class="font-bold text-lg text-white mb-4">Categories</h3>
-          <ul class="space-y-2">
-            <li><a href="#" class="hover:text-white">Laptops</a></li>
-            <li><a href="#" class="hover:text-white">Smartphones</a></li>
-            <li><a href="#" class="hover:text-white">Audio</a></li>
-            <li><a href="#" class="hover:text-white">Accessories</a></li>
+        <div class="footer-col">
+          <h4>Bantuan</h4>
+          <ul class="footer-links">
+            <li><a href="#">Cara Belanja</a></li>
+            <li><a href="#">Syarat & Ketentuan</a></li>
+            <li><a href="#">Kebijakan Privasi</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Hubungi Kami</a></li>
           </ul>
         </div>
-        <div>
-          <h3 class="font-bold text-lg text-white mb-4">Contact Us</h3>
-          <ul class="space-y-2">
-            <li>📧 support@techhub.com</li>
-            <li>📞 (800) TECH-NOW</li>
-            <li>📍 750 Innovation Drive, Silicon Valley</li>
+        <div class="footer-col">
+          <h4>Kontak Kami</h4>
+          <ul class="footer-links" style="list-style: none;">
+            <li><i class="fas fa-map-marker-alt"></i> &nbsp; Menara Rajawali, Jakarta</li>
+            <li><i class="fas fa-phone"></i> &nbsp; (021) 500-1234</li>
+            <li><i class="fas fa-envelope"></i> &nbsp; hello@mobilex.id</li>
+            <li style="margin-top:16px;">
+              <a href="#" style="margin-right:12px; color:#a0a0a5;"><i class="fab fa-instagram fa-lg"></i></a>
+              <a href="#" style="margin-right:12px; color:#a0a0a5;"><i class="fab fa-twitter fa-lg"></i></a>
+              <a href="#" style="margin-right:12px; color:#a0a0a5;"><i class="fab fa-tiktok fa-lg"></i></a>
+            </li>
           </ul>
         </div>
       </div>
-      <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-500">
-        <p>&copy; 2025 TechHub. All rights reserved.</p>
+      <div class="copyright">
+        <p>&copy; 2025 MobileX. All rights reserved. PT MobileX Indonesia — SIUP: 12345/2020/PMDN</p>
       </div>
     </div>
   </footer>
 
+  <!-- JavaScript -->
   <script>
-    // Real product data with verified image URLs (CC0 / Wikimedia / Unsplash)
-    const products = [
-      {
-        id: 1,
-        name: 'MacBook Pro 16"',
-        price: 2499.00,
-        originalPrice: 2799.00,
-        category: 'laptops',
-        // Source: Apple official press images (fair use for demo)
-        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/2023-Apple-MacBook-Pro-14-16-inch-M2-Max-M2-Pro-4.jpg/800px-2023-Apple-MacBook-Pro-14-16-inch-M2-Max-M2-Pro-4.jpg',
-        rating: 4.9,
-        reviews: 342,
-        description: 'M3 Max chip, 32GB RAM, 1TB SSD — powerhouse for developers and creatives.',
-        stock: 18,
-        tags: ['premium', 'bestseller', 'apple'],
-        specs: [
-          'Apple M3 Max chip',
-          '32GB unified memory',
-          '1TB SSD storage',
-          '16.2" Liquid Retina XDR display',
-          'Up to 22 hours battery life'
-        ]
-      },
-      {
-        id: 2,
-        name: 'Sony WH-1000XM5',
-        price: 349.99,
-        originalPrice: 399.99,
-        category: 'audio',
-        // Source: Sony press kit (public domain for review)
-        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Sony_WH-1000XM5_Black.png/800px-Sony_WH-1000XM5_Black.png',
-        rating: 4.8,
-        reviews: 1287,
-        description: 'Industry-leading noise cancellation, 30hr battery, crystal-clear call quality.',
-        stock: 45,
-        tags: ['wireless', 'premium', 'bestseller'],
-        specs: [
-          'Dual processor noise cancellation',
-          '30-hour battery (with ANC)',
-          '8 microphones for voice pickup',
-          'LDAC & Hi-Res Audio',
-          'Quick charge: 3 min = 3 hrs'
-        ]
-      },
-      {
-        id: 3,
-        name: 'iPhone 15 Pro',
-        price: 999.00,
-        originalPrice: 1099.00,
-        category: 'smartphones',
-        // Source: Apple (Wikimedia)
-        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/IPhone_15_Pro_%28Natural_Titanium%29.png/800px-IPhone_15_Pro_%28Natural_Titanium%29.png',
-        rating: 4.7,
-        reviews: 894,
-        description: 'Titanium design, A17 Pro chip, 48MP camera — the ultimate smartphone experience.',
-        stock: 32,
-        tags: ['apple', '5g', 'flagship'],
-        specs: [
-          'A17 Pro chip (3nm)',
-          '6.1" Super Retina XDR OLED',
-          '48MP main camera (ProRes)',
-          'USB-C (USB 3, 10Gbps)',
-          'Titanium frame, 187g'
-        ]
-      },
-      {
-        id: 4,
-        name: 'Dell XPS 13',
-        price: 1299.99,
-        originalPrice: 1499.99,
-        category: 'laptops',
-        // Source: Dell (Wikimedia)
-        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Dell_XPS_13_%289315%29.png/800px-Dell_XPS_13_%289315%29.png',
-        rating: 4.6,
-        reviews: 456,
-        description: 'InfinityEdge display, Intel Core i7, ultra-thin aluminum chassis.',
-        stock: 23,
-        // Render helpers
-    function renderStars(rating) {
-      const full = Math.floor(rating);
-      const hasHalf = rating % 1 >= 0.5;
-      const empty = 5 - full - (hasHalf ? 1 : 0);
-      let stars = '';
-      for (let i = 0; i < full; i++) {
-        stars += '<svg class="w-4 h-4 text-yellow-400 fill-current" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>';
-      }
-      if (hasHalf) {
-        stars += '<svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><defs><linearGradient id="half"><stop offset="50%" stop-color="currentColor"/><stop offset="50%" stop-color="transparent"/></linearGradient></defs><path fill="url(#half)" d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>';
-      }
-      for (let i = 0; i < empty; i++) {
-        stars += '<svg class="w-4 h-4 text-gray-300 dark:text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>';
-      }
-      return `<div class="flex items-center">${stars}<span class="ml-1 font-medium text-sm">${rating}</span></div>`;
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      header.classList.toggle('header-scrolled', window.scrollY > 50);
+    });
+
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    
+    // Apply saved theme
+    if (isDarkMode) {
+      document.body.classList.add('dark-mode');
+      themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
     }
 
-    function renderCategories() {
-      categoryFilters.innerHTML = categories.map(cat => `
-        <button data-category="${cat.id}" class="px-4 py-2 rounded-full font-medium transition-colors ${
-          selectedCategory === cat.id
-            ? 'bg-blue-500 text-white'
-            : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600'
-        }">
-          ${cat.name} <span class="text-sm opacity-75">(${cat.count})</span>
-        </button>
-      `).join('');
-    }
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isNowDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('darkMode', isNowDark);
+      themeToggle.innerHTML = isNowDark 
+        ? '<i class="fas fa-sun"></i>' 
+        : '<i class="fas fa-moon"></i>';
+    });
 
-    function renderProducts() {
-      const filtered = products.filter(product => {
-        const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                             product.description.toLowerCase().includes(searchTerm.toLowerCase());
-        const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
-        return matchesSearch && matchesCategory;
-      });
-
-      if (filtered.length === 0) {
-        productsGrid.classList.add('hidden');
-        emptyState.classList.remove('hidden');
-      } else {
-        productsGrid.classList.remove('hidden');
-        emptyState.classList.add('hidden');
-        productsGrid.innerHTML = filtered.map(product => `
-          <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group fade-in product-card">
-            <div class="relative">
-              <img src="${product.image}" 
-                   alt="${product.name}" 
-                   class="w-full h-48 object-contain p-4 product-image"
-                   onerror="this.src='https://placehold.co/400x400/3b82f6/ffffff?text=${encodeURIComponent(product.name.split(' ')[0])}'">
-              <div class="absolute top-3 right-3">
-                <button data-fav="${product.id}" class="p-2 rounded-full transition-colors ${
-                  favorites.includes(product.id)
-                    ? 'bg-red-500 text-white'
-                    : 'bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-600'
-                }">
-                  <svg class="w-5 h-5 ${favorites.includes(product.id) ? 'fill-current' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                  </svg>
-                </button>
-              </div>
-              ${product.tags.map(tag => `
-                <span class="absolute top-3 left-3 bg-blue-500 text-white text-xs px-2 py-1 rounded-full">${tag}</span>
-              `).join('')}
-              ${product.originalPrice ? `
-                <div class="absolute bottom-3 left-3 bg-red-500 text-white text-sm px-2 py-1 rounded">
-                  Save $${(product.originalPrice - product.price).toFixed(2)}
-                </div>
-              ` : ''}
-            </div>
-            <div class="p-4">
-              <h3 class="font-bold text-lg text-gray-800 dark:text-white mb-1">${product.name}</h3>
-              <p class="text-gray-600 dark:text-gray-300 text-sm mb-2 line-clamp-2">${product.description}</p>
-              <div class="flex items-center mb-3">
-                ${renderStars(product.rating)} 
-                <span class="text-gray-500 dark:text-gray-400 text-sm ml-2">(${product.reviews})</span>
-              </div>
-              <div class="flex items-center justify-between">
-                <div>
-                  <span class="text-2xl font-bold text-blue-600 dark:text-blue-400">$${product.price.toFixed(2)}</span>
-                  ${product.originalPrice ? `<span class="text-gray-500 dark:text-gray-400 line-through ml-2">$${product.originalPrice.toFixed(2)}</span>` : ''}
-                </div>
-                <button data-view="${product.id}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors flex items-center">
-                  <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                  </svg>
-                  View
-                </button>
-              </div>
-            </div>
-          </div>
-        `).join('');
-      }
-    }
-
-    function openProductModal(productId) {
-      const product = products.find(p => p.id === productId);
-      if (!product) return;
-
-      selectedProduct = product;
-      modalQty = 1;
-
-      document.getElementById('modalTitle').textContent = product.name;
-      document.getElementById('modalImage').src = product.image;
-      document.getElementById('modalImage').alt = product.name;
-      document.getElementById('modalDescription').textContent = product.description;
-      document.getElementById('modalPrice').textContent = `$${product.price.toFixed(2)}`;
-      document.getElementById('modalOriginalPrice').textContent = product.originalPrice ? `$${product.originalPrice.toFixed(2)}` : '';
-      document.getElementById('modalOriginalPrice').classList.toggle('hidden', !product.originalPrice);
-      document.getElementById('modalQty').textContent = modalQty;
-      document.getElementById('modalRating').innerHTML = renderStars(product.rating);
-
-      const specsList = product.specs.map(spec => `<li>✅ ${spec}</li>`).join('');
-      document.getElementById('modalSpecs').innerHTML = specsList;
-
-      const isFav = favorites.includes(product.id);
-      const heartIcon = document.getElementById('modalHeartIcon');
-      document.getElementById('modalFavorite').classList.toggle('hover:bg-red-100', !isFav);
-      document.getElementById('modalFavorite').classList.toggle('dark:hover:bg-red-900/30', !isFav);
-      heartIcon.classList.toggle('text-red-500', isFav);
-      heartIcon.classList.toggle('fill-current', isFav);
-
-      productModal.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function updateCartUI() {
-      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-      const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2);
-
-      cartCount.textContent = totalItems;
-      cartItemCount.textContent = totalItems;
-      cartTotal.textContent = `$${totalPrice}`;
-
-      try {
-        localStorage.setItem('techhub_cart', JSON.stringify(cart));
-        localStorage.setItem('techhub_favorites', JSON.stringify(favorites));
-      } catch (e) {
-        // Ignore if localStorage fails
-      }
-
-      if (cart.length === 0) {
-        cartEmpty.classList.remove('hidden');
-        cartItems.classList.add('hidden');
-        cartFooter.classList.add('hidden');
-      } else {
-        cartEmpty.classList.add('hidden');
-        cartItems.classList.remove('hidden');
-        cartFooter.classList.remove('hidden');
-
-        cartItems.innerHTML = cart.map(item => `
-          <div class="flex items-center space-x-4 p-4 border-b border-gray-200 dark:border-gray-700">
-            <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-contain rounded-lg">
-            <div class="flex-1">
-              <h4 class="font-semibold text-gray-800 dark:text-white">${item.name}</h4>
-              <p class="text-blue-600 dark:text-blue-400 font-bold">$${item.price.toFixed(2)}</p>
-            </div>
-            <div class="flex items-center space-x-2">
-              <button data-update="${item.id}" data-action="dec" class="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
-                </svg>
-              </button>
-              <span class="w-8 text-center font-medium">${item.quantity}</span>
-              <button data-update="${item.id}" data-action="inc" class="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-600">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                </svg>
-              </button>
-            </div>
-            <button data-remove="${item.id}" class="text-red-500 hover:text-red-700">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            </button>
-          </div>
-        `).join('');
-      }
-    }
-
-    function addToCart(productId, qty = 1) {
-      const product = products.find(p => p.id === productId);
-      if (!product) return;
-
-      const existing = cart.find(item => item.id === productId);
-      if (existing) {
-        existing.quantity += qty;
-      } else {
-        cart.push({ ...product, quantity: qty });
-      }
-      updateCartUI();
-    }
-
-    function removeFromCart(productId) {
-      cart = cart.filter(item => item.id !== productId);
-      updateCartUI();
-    }
-
-    function updateQuantity(productId, delta) {
-      const item = cart.find(i => i.id === productId);
-      if (item) {
-        item.quantity += delta;
-        if (item.quantity < 1) {
-          removeFromCart(productId);
-        } else {
-          updateCartUI();
-        }
-      }
-    }
-
-    function toggleFavorite(productId) {
-      const index = favorites.indexOf(productId);
-      if (index > -1) {
-        favorites.splice(index, 1);
-      } else {
-        favorites.push(productId);
-      }
-      renderProducts();
-      updateCartUI(); // to update modal heart icon
-    }
-
-    function clearFilters() {
-      searchTerm = '';
-      selectedCategory = 'all';
-      searchInput.value = '';
-      mobileSearchInput.value = '';
-      renderCategories();
-      renderProducts();
-    }
-
-    // Dark mode
-    function initDarkMode() {
-      const isDark = localStorage.getItem('darkMode') === 'true' || 
-                    (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
-      
-      if (isDark) {
-        document.documentElement.classList.add('dark');
-        sunIcon.classList.remove('hidden');
-        moonIcon.classList.add('hidden');
-        localStorage.setItem('darkMode', 'true');
-      } else {
-        document.documentElement.classList.remove('dark');
-        sunIcon.classList.add('hidden');
-        moonIcon.classList.remove('hidden');
-        localStorage.setItem('darkMode', 'false');
-      }
-    }
-
-    function toggleDarkMode() {
-      const isDark = document.documentElement.classList.toggle('dark');
-      localStorage.setItem('darkMode', isDark);
-      if (isDark) {
-        sunIcon.classList.remove('hidden');
-        moonIcon.classList.add('hidden');
-      } else {
-        sunIcon.classList.add('hidden');
-        moonIcon.classList.remove('hidden');
-      }
-    }
-
-    // Event bindings
-    function bindEvents() {
-      // Search
-      searchInput.addEventListener('input', (e) => {
-        searchTerm = e.target.value;
-        renderProducts();
-      });
-      mobileSearchInput.addEventListener('input', (e) => {
-        searchTerm = e.target.value;
-        renderProducts();
-      });
-
-      // Category filters
-      categoryFilters.addEventListener('click', (e) => {
-        if (e.target.tagName === 'BUTTON') {
-          selectedCategory = e.target.dataset.category;
-          renderCategories();
-          renderProducts();
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
         }
       });
-
-      // Product actions
-      productsGrid.addEventListener('click', (e) => {
-        if (e.target.closest('[data-view]')) {
-          const id = parseInt(e.target.closest('[data-view]').dataset.view);
-          openProductModal(id);
-        } else if (e.target.closest('[data-fav]')) {
-          const id = parseInt(e.target.closest('[data-fav]').dataset.fav);
-          toggleFavorite(id);
-        }
-      });
-
-      // Modal controls
-      closeModalBtn.addEventListener('click', () => {
-        productModal.classList.add('hidden');
-        document.body.style.overflow = '';
-      });
-      document.getElementById('modalInc').addEventListener('click', () => {
-        modalQty = Math.min(modalQty + 1, 99);
-        document.getElementById('modalQty').textContent = modalQty;
-      });
-      document.getElementById('modalDec').addEventListener('click', () => {
-        modalQty = Math.max(modalQty - 1, 1);
-        document.getElementById('modalQty').textContent = modalQty;
-      });
-      document.getElementById('modalAddToCart').addEventListener('click', () => {
-        if (selectedProduct) {
-          addToCart(selectedProduct.id, modalQty);
-          productModal.classList.add('hidden');
-          document.body.style.overflow = '';
-        }
-      });
-      document.getElementById('modalFavorite').addEventListener('click', () => {
-        if (selectedProduct) {
-          toggleFavorite(selectedProduct.id);
-        }
-      });
-
-      // Cart actions
-      cartBtn.addEventListener('click', () => {
-        cartModal.classList.remove('hidden');
-      });
-      closeCartBtn.addEventListener('click', () => {
-        cartModal.classList.add('hidden');
-      });
-      cartItems.addEventListener('click', (e) => {
-        if (e.target.closest('[data-remove]')) {
-          const id = parseInt(e.target.closest('[data-remove]').dataset.remove);
-          removeFromCart(id);
-        } else if (e.target.closest('[data-update]')) {
-          const btn = e.target.closest('[data-update]');
-          const id = parseInt(btn.dataset.update);
-          const action = btn.dataset.action;
-          updateQuantity(id, action === 'inc' ? 1 : -1);
-        }
-      });
-
-      continueShoppingBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          cartModal.classList.add('hidden');
-        });
-      });
-
-      // Close modals on outside click
-      [cartModal, productModal].forEach(modal => {
-        modal.addEventListener('click', (e) => {
-          if (e.target === modal) {
-            modal.classList.add('hidden');
-            document.body.style.overflow = '';
-          }
-        });
-      });
-
-      // Mobile filter
-      filterBtn.addEventListener('click', () => {
-        categoryFilters.scrollIntoView({ behavior: 'smooth' });
-      });
-
-      // Dark mode
-      darkModeToggle.addEventListener('click', toggleDarkMode);
-    }
-
-    // Initialize
-    document.addEventListener('DOMContentLoaded', () => {
-      initDarkMode();
-      renderCategories();
-      renderProducts();
-      updateCartUI();
-      bindEvents();
     });
   </script>
+
 </body>
-</html
+</html>
