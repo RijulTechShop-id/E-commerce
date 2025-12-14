@@ -4,32 +4,30 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="MobileX — Toko Resmi Handphone Premium: iPhone, Samsung Galaxy, Google Pixel & lebih. Garansi Resmi, Gratis Ongkir, COD." />
-  <title>MobileX | Premium Smartphone Store</title>
+  <title>MobileX | Cyberpunk Smartphone Hub</title>
   
-  <!-- Google Fonts: Inter (UI) + Montserrat (Headings) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+  <!-- Google Fonts: Orbitron (Headings) + Exo 2 (Body) -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet">
   
-  <!-- Font Awesome (Free CDN) -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
   <style>
-    /* ===== GLOBAL RESET & VARIABLES ===== */
+    /* ===== CYBERPUNK THEME VARIABLES ===== */
     :root {
-      --primary: #007AFF;
-      --primary-dark: #0062cc;
-      --secondary: #ff2d55;
-      --dark: #0f0f0f;
-      --darker: #080808;
-      --light: #ffffff;
-      --gray-100: #f5f5f7;
-      --gray-200: #e5e5ea;
-      --gray-600: #6e6e73;
-      --gray-800: #2c2c2e;
-      --radius: 16px;
-      --shadow-sm: 0 2px 12px rgba(0,0,0,0.05);
-      --shadow-md: 0 8px 30px rgba(0,0,0,0.12);
-      --shadow-lg: 0 20px 50px rgba(0,0,0,0.25);
-      --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --neon-purple: #b967ff;
+      --neon-cyan: #00f0ff;
+      --neon-pink: #ff2a6d;
+      --dark-bg: #0a0a14;
+      --darker-bg: #05050a;
+      --card-bg: #0f0f1a;
+      --text-primary: #e0e0ff;
+      --text-secondary: #a0a0c0;
+      --glow-purple: 0 0 12px rgba(185, 103, 255, 0.6), 0 0 24px rgba(185, 103, 255, 0.3);
+      --glow-cyan: 0 0 12px rgba(0, 240, 255, 0.6), 0 0 24px rgba(0, 240, 255, 0.3);
+      --glow-pink: 0 0 12px rgba(255, 42, 109, 0.6), 0 0 24px rgba(255, 42, 109, 0.3);
+      --radius: 14px;
+      --transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     * {
@@ -43,17 +41,38 @@
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--gray-100);
-      color: var(--dark);
+      font-family: 'Exo 2', sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text-primary);
       line-height: 1.6;
       overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Subtle scanline overlay for cyberpunk vibe */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0,0,0,0.03),
+        rgba(0,0,0,0.03) 1px,
+        transparent 1px,
+        transparent 2px
+      );
+      pointer-events: none;
+      z-index: 10000;
     }
 
     h1, h2, h3, h4 {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
-      letter-spacing: -0.02em;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
     }
 
     img {
@@ -63,7 +82,7 @@
 
     .container {
       width: 100%;
-      max-width: 1280px;
+      max-width: 1320px;
       margin: 0 auto;
       padding: 0 24px;
     }
@@ -72,8 +91,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 14px 32px;
-      border-radius: 12px;
+      padding: 16px 36px;
+      border-radius: 10px;
       font-weight: 600;
       font-size: 16px;
       text-decoration: none;
@@ -81,44 +100,80 @@
       transition: var(--transition);
       border: none;
       outline: none;
+      position: relative;
+      overflow: hidden;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 1px;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.1);
+      transform: translateX(-100%);
+      transition: transform 0.4s;
+    }
+
+    .btn:hover::before {
+      transform: translateX(0);
     }
 
     .btn-primary {
-      background: var(--primary);
-      color: white;
+      background: var(--neon-purple);
+      color: black;
+      box-shadow: var(--glow-purple);
+      text-shadow: 0 0 6px rgba(0,0,0,0.5);
     }
     .btn-primary:hover {
-      background: var(--primary-dark);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: var(--glow-purple), 0 10px 30px rgba(185, 103, 255, 0.4);
     }
 
     .btn-outline {
       background: transparent;
-      border: 2px solid var(--primary);
-      color: var(--primary);
+      border: 2px solid var(--neon-cyan);
+      color: var(--neon-cyan);
+      box-shadow: var(--glow-cyan);
+      text-shadow: 0 0 6px rgba(0,240,255,0.5);
     }
     .btn-outline:hover {
-      background: rgba(0, 122, 255, 0.05);
+      background: rgba(0, 240, 255, 0.1);
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: var(--glow-cyan), 0 10px 30px rgba(0, 240, 255, 0.2);
     }
 
-    /* ===== LAYOUT ===== */
+    /* Glitch effect on hover (subtle) */
+    .glitch-hover {
+      position: relative;
+    }
+    .glitch-hover:hover {
+      animation: glitch 0.3s ease-in-out 1;
+    }
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-3px, 3px); }
+      40% { transform: translate(-3px, -3px); }
+      60% { transform: translate(3px, 3px); }
+      80% { transform: translate(3px, -3px); }
+      100% { transform: translate(0); }
+    }
+
+    /* ===== HEADER ===== */
     header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       z-index: 1000;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      background: rgba(255, 255, 255, 0.85);
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-      transition: var(--transition);
-    }
-
-    .header-scrolled {
-      background: rgba(255, 255, 255, 0.95);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      background: rgba(10, 10, 20, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(185, 103, 255, 0.2);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
     }
 
     .navbar {
@@ -129,30 +184,36 @@
     }
 
     .logo {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 900;
-      font-size: 28px;
-      color: var(--dark);
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 800;
+      font-size: 32px;
+      color: white;
       text-decoration: none;
+      text-shadow: var(--glow-purple);
+      letter-spacing: -1px;
     }
     .logo span {
-      color: var(--primary);
+      color: var(--neon-cyan);
+      text-shadow: var(--glow-cyan);
     }
 
     .nav-links {
       display: flex;
-      gap: 32px;
+      gap: 28px;
     }
     .nav-links a {
       text-decoration: none;
-      color: var(--gray-800);
-      font-weight: 600;
+      color: var(--text-secondary);
+      font-weight: 500;
       font-size: 16px;
       position: relative;
       padding: 6px 0;
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 0.5px;
     }
     .nav-links a:hover {
-      color: var(--primary);
+      color: var(--neon-cyan);
+      text-shadow: var(--glow-cyan);
     }
     .nav-links a::after {
       content: '';
@@ -161,7 +222,7 @@
       left: 0;
       width: 0;
       height: 2px;
-      background: var(--primary);
+      background: var(--neon-cyan);
       transition: var(--transition);
     }
     .nav-links a:hover::after {
@@ -173,73 +234,72 @@
       gap: 16px;
       align-items: center;
     }
-    .theme-toggle {
-      background: none;
-      border: none;
-      font-size: 20px;
-      cursor: pointer;
-      color: var(--gray-600);
-      transition: var(--transition);
-    }
-    .theme-toggle:hover {
-      color: var(--primary);
-    }
     .cart-icon {
       position: relative;
+      color: var(--text-primary);
+      font-size: 20px;
+      transition: var(--transition);
+    }
+    .cart-icon:hover {
+      color: var(--neon-pink);
+      text-shadow: var(--glow-pink);
     }
     .cart-badge {
       position: absolute;
-      top: -8px;
-      right: -8px;
-      background: var(--secondary);
-      color: white;
+      top: -10px;
+      right: -10px;
+      background: var(--neon-pink);
+      color: black;
       font-size: 10px;
-      font-weight: 700;
-      width: 18px;
-      height: 18px;
+      font-weight: 800;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-family: 'Orbitron', sans-serif;
+      box-shadow: var(--glow-pink);
     }
 
     /* ===== HERO ===== */
     .hero {
-      padding: 160px 0 100px;
-      background: linear-gradient(135deg, #f8f9ff 0%, #eef2ff 100%);
+      padding: 180px 0 120px;
+      background: linear-gradient(135deg, #0a0a1a 0%, #0f0f2a 100%);
       position: relative;
       overflow: hidden;
     }
     .hero::before {
       content: '';
       position: absolute;
-      top: -100px;
-      right: -100px;
-      width: 600px;
-      height: 600px;
+      top: -150px;
+      right: -150px;
+      width: 700px;
+      height: 700px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,122,255,0.08) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(185, 103, 255, 0.15) 0%, transparent 70%);
       z-index: -1;
     }
     .hero-content {
-      max-width: 650px;
+      max-width: 680px;
       margin-bottom: 60px;
     }
     .hero h1 {
-      font-size: 56px;
+      font-size: 64px;
       line-height: 1.1;
       margin-bottom: 24px;
-      color: var(--darker);
+      color: white;
+      text-shadow: 0 0 16px rgba(185, 103, 255, 0.7);
     }
     .hero p {
       font-size: 20px;
-      color: var(--gray-600);
+      color: var(--text-secondary);
       margin-bottom: 32px;
-      max-width: 600px;
+      max-width: 650px;
     }
     .hero-btns {
       display: flex;
-      gap: 16px;
+      gap: 20px;
     }
 
     .hero-device {
@@ -247,48 +307,54 @@
       text-align: center;
     }
     .hero-device img {
-      max-width: 500px;
+      max-width: 520px;
       margin: 0 auto;
-      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4)) 
+               drop-shadow(0 0 20px rgba(185, 103, 255, 0.3));
+      border-radius: 8px;
     }
 
-    /* ===== CATEGORIES ===== */
+    /* ===== SECTIONS ===== */
     .section {
       padding: 100px 0;
     }
     .section-header {
       text-align: center;
-      max-width: 700px;
+      max-width: 750px;
       margin: 0 auto 60px;
     }
     .section-header h2 {
-      font-size: 42px;
-      margin-bottom: 16px;
-      color: var(--darker);
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: white;
+      text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
     }
     .section-header p {
       font-size: 18px;
-      color: var(--gray-600);
+      color: var(--text-secondary);
     }
 
+    /* Categories */
     .category-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
     }
     .category-card {
-      background: white;
+      background: var(--card-bg);
       border-radius: var(--radius);
       overflow: hidden;
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
       transition: var(--transition);
+      border: 1px solid rgba(185, 103, 255, 0.2);
     }
     .category-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-md);
+      transform: translateY(-10px) rotateX(5deg);
+      box-shadow: var(--glow-purple), 0 15px 35px rgba(0, 0, 0, 0.6);
+      border-color: var(--neon-purple);
     }
     .category-img {
-      height: 200px;
+      height: 220px;
       overflow: hidden;
     }
     .category-img img {
@@ -298,269 +364,304 @@
       transition: var(--transition);
     }
     .category-card:hover .category-img img {
-      transform: scale(1.05);
+      transform: scale(1.1) rotate(2deg);
     }
     .category-content {
-      padding: 24px;
+      padding: 28px;
       text-align: center;
     }
     .category-content h3 {
-      font-size: 24px;
-      margin-bottom: 8px;
+      font-size: 26px;
+      margin-bottom: 12px;
+      color: white;
     }
     .category-content p {
-      color: var(--gray-600);
-      font-size: 15px;
+      color: var(--text-secondary);
+      font-size: 16px;
     }
 
-    /* ===== FEATURED PRODUCTS ===== */
+    /* Products */
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 32px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 36px;
     }
     .product-card {
-      background: white;
+      background: var(--card-bg);
       border-radius: var(--radius);
       overflow: hidden;
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
       transition: var(--transition);
+      border: 1px solid rgba(0, 240, 255, 0.15);
     }
     .product-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-lg);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: var(--glow-cyan), 0 20px 40px rgba(0, 0, 0, 0.7);
+      border-color: var(--neon-cyan);
     }
     .product-badge {
       position: absolute;
-      top: 16px;
-      left: 16px;
-      background: var(--secondary);
-      color: white;
+      top: 20px;
+      left: 20px;
+      background: var(--neon-pink);
+      color: black;
       font-size: 12px;
-      font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 20px;
+      font-weight: 800;
+      padding: 6px 16px;
+      border-radius: 4px;
       z-index: 2;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: var(--glow-pink);
     }
     .product-img {
       position: relative;
-      height: 240px;
-      overflow: hidden;
+      height: 260px;
+      background: #080812;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .product-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      padding: 24px;
+      max-height: 85%;
+      max-width: 85%;
       transition: var(--transition);
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
     }
     .product-card:hover .product-img img {
-      transform: scale(1.03);
+      transform: scale(1.05);
     }
     .product-info {
-      padding: 24px;
+      padding: 28px;
     }
     .product-info h3 {
-      font-size: 22px;
-      margin-bottom: 8px;
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: white;
     }
     .product-meta {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
     .price {
-      font-size: 24px;
+      font-size: 26px;
       font-weight: 700;
-      color: var(--primary);
+      color: var(--neon-cyan);
+      font-family: 'Orbitron', sans-serif;
     }
     .rating {
       color: #ffb400;
       font-size: 14px;
     }
-    .product-actions {
-      display: flex;
-      gap: 12px;
+    .product-actions .btn {
+      width: 100%;
+      font-size: 15px;
     }
 
-    /* ===== WHY CHOOSE US ===== */
+    /* Features */
     .features {
-      background: var(--dark);
-      color: white;
-    }
-    .features .section-header h2,
-    .features .section-header p {
-      color: white;
+      background: linear-gradient(145deg, #0a0a18 0%, #0d0d20 100%);
     }
     .feature-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 32px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 36px;
     }
     .feature-card {
       text-align: center;
       padding: 40px 32px;
       border-radius: var(--radius);
-      background: rgba(255,255,255,0.05);
+      background: rgba(15, 15, 30, 0.6);
       backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 240, 255, 0.1);
       transition: var(--transition);
     }
     .feature-card:hover {
-      background: rgba(255,255,255,0.1);
-      transform: translateY(-6px);
+      background: rgba(30, 20, 50, 0.7);
+      transform: translateY(-8px);
+      border-color: var(--neon-cyan);
+      box-shadow: var(--glow-cyan), 0 15px 30px rgba(0, 0, 0, 0.5);
     }
     .feature-icon {
-      width: 72px;
-      height: 72px;
-      background: rgba(0,122,255,0.15);
+      width: 80px;
+      height: 80px;
+      background: rgba(0, 240, 255, 0.1);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 24px;
-      font-size: 28px;
-      color: var(--primary);
+      margin: 0 auto 28px;
+      font-size: 32px;
+      color: var(--neon-cyan);
+      box-shadow: var(--glow-cyan);
     }
     .feature-card h3 {
-      font-size: 24px;
+      font-size: 26px;
       margin-bottom: 16px;
+      color: white;
     }
     .feature-card p {
-      color: #a0a0a5;
+      color: var(--text-secondary);
       font-size: 16px;
     }
 
-    /* ===== TESTIMONIALS ===== */
+    /* Testimonials */
     .testimonials {
-      background: linear-gradient(to bottom, white 0%, #f8f9ff 100%);
+      background: linear-gradient(to bottom, #0a0a18 0%, #0c0c20 100%);
     }
     .testimonial-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 32px;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 36px;
       justify-content: center;
     }
     .testimonial-card {
-      background: white;
+      background: var(--card-bg);
       border-radius: var(--radius);
-      padding: 32px;
-      box-shadow: var(--shadow-sm);
+      padding: 36px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
       position: relative;
+      border: 1px solid rgba(185, 103, 255, 0.2);
     }
     .testimonial-card::before {
       content: '"';
       position: absolute;
-      top: 20px;
-      left: 24px;
-      font-size: 80px;
-      font-family: serif;
-      color: rgba(0,0,0,0.05);
+      top: 24px;
+      left: 28px;
+      font-size: 90px;
+      font-family: 'Orbitron', sans-serif;
+      color: rgba(185, 103, 255, 0.15);
       line-height: 1;
     }
     .testimonial-content {
-      font-size: 18px;
-      font-style: italic;
-      margin-bottom: 24px;
-      color: var(--gray-800);
+      font-size: 19px;
+      font-style: normal;
+      margin-bottom: 28px;
+      color: var(--text-primary);
+      font-family: 'Exo 2', sans-serif;
+      line-height: 1.7;
     }
     .testimonial-author {
       display: flex;
       align-items: center;
     }
     .author-avatar {
-      width: 56px;
-      height: 56px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
       overflow: hidden;
-      margin-right: 16px;
+      margin-right: 20px;
+      border: 2px solid var(--neon-purple);
     }
     .author-info h4 {
-      font-size: 18px;
-      margin-bottom: 4px;
+      font-size: 20px;
+      margin-bottom: 6px;
+      color: white;
     }
     .author-info p {
-      color: var(--gray-600);
+      color: var(--neon-cyan);
       font-size: 15px;
     }
 
-    /* ===== CTA ===== */
+    /* CTA */
     .cta {
-      background: linear-gradient(135deg, var(--primary) 0%, #0052cc 100%);
-      color: white;
+      background: linear-gradient(135deg, #0a0a20 0%, #1a0a30 100%);
       text-align: center;
-      padding: 80px 0;
+      padding: 90px 0;
+      border-top: 1px solid rgba(185, 103, 255, 0.3);
+      border-bottom: 1px solid rgba(0, 240, 255, 0.3);
     }
     .cta h2 {
-      font-size: 42px;
-      margin-bottom: 24px;
-      max-width: 700px;
+      font-size: 52px;
+      margin-bottom: 28px;
+      max-width: 800px;
       margin-left: auto;
       margin-right: auto;
+      color: white;
+      text-shadow: 0 0 16px rgba(0, 240, 255, 0.8);
     }
     .cta p {
       font-size: 20px;
-      max-width: 600px;
-      margin: 0 auto 32px;
-      opacity: 0.9;
+      max-width: 650px;
+      margin: 0 auto 36px;
+      color: var(--text-secondary);
+    }
+    .cta .btn {
+      background: var(--neon-cyan);
+      color: black;
+      box-shadow: var(--glow-cyan);
+    }
+    .cta .btn:hover {
+      background: white;
+      color: #0a0a20;
     }
 
-    /* ===== FOOTER ===== */
+    /* Footer */
     footer {
-      background: var(--darker);
-      color: #a0a0a5;
-      padding: 80px 0 40px;
+      background: var(--darker-bg);
+      color: var(--text-secondary);
+      padding: 80px 0 50px;
+      border-top: 1px solid rgba(0, 240, 255, 0.1);
     }
     .footer-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 40px;
       margin-bottom: 60px;
     }
     .footer-col h4 {
       color: white;
-      font-size: 18px;
+      font-size: 20px;
       margin-bottom: 24px;
       font-weight: 700;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
     .footer-links {
       list-style: none;
     }
     .footer-links li {
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
     .footer-links a {
-      color: #a0a0a5;
+      color: var(--text-secondary);
       text-decoration: none;
       transition: var(--transition);
+      font-family: 'Exo 2', sans-serif;
     }
     .footer-links a:hover {
-      color: white;
+      color: var(--neon-cyan);
+      text-shadow: var(--glow-cyan);
     }
     .copyright {
       text-align: center;
       padding-top: 40px;
       border-top: 1px solid rgba(255,255,255,0.05);
       font-size: 14px;
+      color: #6a6a8a;
     }
 
-    /* ===== RESPONSIVE ===== */
+    /* Responsive */
     @media (max-width: 900px) {
       .hero {
         text-align: center;
-        padding: 140px 0 60px;
+        padding: 150px 0 80px;
       }
       .hero-content {
-        margin: 0 auto 40px;
+        margin: 0 auto 50px;
       }
       .hero-btns {
         justify-content: center;
       }
       .hero-device {
-        margin-top: 40px;
+        margin-top: 50px;
       }
       .hero h1 {
-        font-size: 42px;
+        font-size: 48px;
       }
     }
 
@@ -575,13 +676,18 @@
         margin-top: 16px;
       }
       .hero h1 {
-        font-size: 36px;
+        font-size: 38px;
       }
       .hero-btns {
         flex-wrap: wrap;
       }
       .section-header h2 {
-        font-size: 32px;
+        font-size: 36px;
+      }
+      .testimonial-grid,
+      .products-grid,
+      .category-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -592,7 +698,7 @@
   <header id="header">
     <div class="container">
       <nav class="navbar">
-        <a href="#" class="logo">Mobile<span>X</span></a>
+        <a href="#" class="logo glitch-hover">Mobile<span>X</span></a>
         <div class="nav-links">
           <a href="#products">Produk</a>
           <a href="#categories">Kategori</a>
@@ -601,9 +707,6 @@
           <a href="#contact">Bantuan</a>
         </div>
         <div class="nav-actions">
-          <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-            <i class="fas fa-moon"></i>
-          </button>
           <a href="#" class="cart-icon" aria-label="Keranjang belanja">
             <i class="fas fa-shopping-bag"></i>
             <span class="cart-badge">3</span>
@@ -612,20 +715,19 @@
       </nav>
     </div>
   </header>
-
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
       <div class="hero-content">
-        <h1>Smartphone Premium, Dikirim Langsung ke Tangan Anda</h1>
-        <p>Temukan koleksi terbaru iPhone, Samsung Galaxy, dan Google Pixel dengan garansi resmi, bebas ongkir, dan cicilan 0%.</p>
+        <h1>SMARTPHONE <span style="color:var(--neon-cyan)">NEXT-GEN</span>, DELIVERED.</h1>
+        <p>iPhone 15 Pro, Galaxy S24 Ultra, Pixel 8 Pro — garansi resmi, pengiriman kilat, cicilan 0%. Dibangun untuk masa depan.</p>
         <div class="hero-btns">
-          <a href="#products" class="btn btn-primary">Lihat Semua Produk</a>
-          <a href="#categories" class="btn btn-outline">Jelajahi Kategori</a>
+          <a href="#products" class="btn btn-primary">Jelajahi Produk</a>
+          <a href="#categories" class="btn btn-outline">Kategori</a>
         </div>
       </div>
       <div class="hero-device">
-        <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=500&h=500&q=80" alt="iPhone 15 Pro Max di atas meja kayu">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/IPhone_15_Pro_—_Black_Titanium_%28Back%29.png/1200px-IPhone_15_Pro_—_Black_Titanium_%28Back%29.png" alt="iPhone 15 Pro Black Titanium">
       </div>
     </div>
   </section>
@@ -634,35 +736,35 @@
   <section class="section" id="categories">
     <div class="container">
       <div class="section-header">
-        <h2>Kategori Utama</h2>
-        <p>Pilih berdasarkan kebutuhan dan preferensi Anda.</p>
+        <h2>KATEGORI UTAMA</h2>
+        <p>Teknologi sesuai gaya hidup digital Anda.</p>
       </div>
       <div class="category-grid">
         <div class="category-card">
           <div class="category-img">
-            <img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?auto=format&fit=crop&w=600&h=400&q=80" alt="Smartphone Premium">
+            <img src="https://images.samsung.com/is/image/samsung/p6pim/id/s24-ultra-5g-sm-s928bzkgxid/front/sm-s928bzkgxid-thumb-537431662?$650_519_PNG$" alt="Samsung Galaxy S24 Ultra">
           </div>
           <div class="category-content">
-            <h3>Premium Flagship</h3>
-            <p>Performa tertinggi & kamera profesional</p>
+            <h3>FLAGSHIP ELITE</h3>
+            <p>Performa AI, kamera pro-grade, desain futuristik</p>
           </div>
         </div>
         <div class="category-card">
           <div class="category-img">
-            <img src="https://images.unsplash.com/photo-1621762001935-2da0e147e11f?auto=format&fit=crop&w=600&h=400&q=80" alt="Smartphone Mid-Range">
+            <img src="https://images.unsplash.com/photo-1699304890098-86c806e7d5d8?auto=format&fit=crop&w=600&h=400&q=85" alt="Mid-Range Smartphones">
           </div>
           <div class="category-content">
-            <h3>Mid-Range Unggulan</h3>
-            <p>Fitur lengkap, harga terjangkau</p>
+            <h3>MID-RANGE POWER</h3>
+            <p>Performa tinggi tanpa harga flagship</p>
           </div>
         </div>
         <div class="category-card">
           <div class="category-img">
-            <img src="https://images.unsplash.com/photo-1582481405434-295f0e9e963a?auto=format&fit=crop&w=600&h=400&q=80" alt="Aksesoris">
+            <img src="https://images.unsplash.com/photo-1606914053599-4ce34d5e7e7f?auto=format&fit=crop&w=600&h=400&q=85" alt="Tech Accessories">
           </div>
           <div class="category-content">
-            <h3>Aksesoris & Wearable</h3>
-            <p>Casing, charger, earphone & smartwatch</p>
+            <h3>TECH ACCESSORIES</h3>
+            <p>Earbuds TWS, powerbank GaN, smartwatch</p>
           </div>
         </div>
       </div>
@@ -670,18 +772,18 @@
   </section>
 
   <!-- Featured Products -->
-  <section class="section" id="products" style="background: #f8f9ff;">
+  <section class="section" id="products" style="background: linear-gradient(140deg, #0a0a18 0%, #0d0d25 100%);">
     <div class="container">
       <div class="section-header">
-        <h2>Produk Unggulan</h2>
-        <p>Best seller minggu ini — stok terbatas!</p>
+        <h2>PRODUK UNGGULAN</h2>
+        <p>Terjual lebih dari 1.200 unit minggu ini — stok terbatas!</p>
       </div>
       <div class="products-grid">
-        <!-- Product 1 -->
+        <!-- Product 1: iPhone 15 Pro -->
         <div class="product-card">
           <div class="product-img">
-            <span class="product-badge">Baru</span>
-            <img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=300&h=300&q=80" alt="iPhone 15 Pro">
+            <span class="product-badge">BARU</span>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/IPhone_15_Pro_—_Natural_Titanium.png/1200px-IPhone_15_Pro_—_Natural_Titanium.png" alt="iPhone 15 Pro Natural Titanium">
           </div>
           <div class="product-info">
             <h3>iPhone 15 Pro</h3>
@@ -697,18 +799,19 @@
               </span>
             </div>
             <div class="product-actions">
-              <a href="#" class="btn btn-primary" style="flex:1; font-size:15px;">Beli Sekarang</a>
+              <a href="#" class="btn btn-primary">BELI SEKARANG</a>
             </div>
           </div>
         </div>
 
-        <!-- Product 2 -->
+        <!-- Product 2: Samsung S24 Ultra -->
         <div class="product-card">
           <div class="product-img">
-            <img src="https://images.unsplash.com/photo-1621498203717-a60d0f47f9a9?auto=format&fit=crop&w=300&h=300&q=80" alt="Samsung Galaxy S24 Ultra">
+            <span class="product-badge">TERLARIS</span>
+            <img src="https://images.samsung.com/is/image/samsung/p6pim/id/s24-ultra-5g-sm-s928bzkgxid/front/sm-s928bzkgxid-thumb-537431662?$1300_1038_PNG$" alt="Samsung Galaxy S24 Ultra">
           </div>
           <div class="product-info">
-            <h3>Samsung S24 Ultra</h3>
+            <h3>S24 Ultra</h3>
             <div class="product-meta">
               <span class="price">Rp 17.499.000</span>
               <span class="rating">
@@ -721,19 +824,19 @@
               </span>
             </div>
             <div class="product-actions">
-              <a href="#" class="btn btn-primary" style="flex:1; font-size:15px;">Beli Sekarang</a>
+              <a href="#" class="btn btn-primary">BELI SEKARANG</a>
             </div>
           </div>
         </div>
 
-        <!-- Product 3 -->
+        <!-- Product 3: Google Pixel 8 Pro -->
         <div class="product-card">
           <div class="product-img">
-            <span class="product-badge">Diskon</span>
-            <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=300&h=300&q=80" alt="Google Pixel 8 Pro">
+            <span class="product-badge">DISKON 8%</span>
+            <img src="https://lh3.googleusercontent.com/VsUuUeKvQ5jz9VQy8RvZ9FmX8nX9K0RZ7J4qZ4X6Z6Z6Z6Z6Z6Z6Z6Z6Z6Z6Z6Z6Z6Z6=w1080-h1080" alt="Google Pixel 8 Pro">
           </div>
           <div class="product-info">
-            <h3>Google Pixel 8 Pro</h3>
+            <h3>Pixel 8 Pro</h3>
             <div class="product-meta">
               <span class="price">Rp 15.299.000</span>
               <span class="rating">
@@ -746,7 +849,7 @@
               </span>
             </div>
             <div class="product-actions">
-              <a href="#" class="btn btn-primary" style="flex:1; font-size:15px;">Beli Sekarang</a>
+              <a href="#" class="btn btn-primary">BELI SEKARANG</a>
             </div>
           </div>
         </div>
@@ -758,31 +861,30 @@
   <section class="section features" id="features">
     <div class="container">
       <div class="section-header">
-        <h2>Mengapa Pelanggan Memilih MobileX?</h2>
-        <p>Komitmen kami: kualitas, kecepatan, dan kepercayaan.</p>
+        <h2>WHY MOBILE<span style="color:var(--neon-cyan)">X</span>?</h2>
+        <p>Kami bukan hanya toko — kami gerbang ke dunia teknologi masa depan.</p>
       </div>
       <div class="feature-grid">
-
-          <div class="feature-card">
+        <div class="feature-card">
           <div class="feature-icon">
             <i class="fas fa-shield-alt"></i>
           </div>
-          <h3>Garansi Resmi 2 Tahun</h3>
-          <p>Semua produk dilengkapi garansi distributor resmi Indonesia.</p>
+          <h3>GARANSI RESMI 2 TAHUN</h3>
+          <p>Semua produk disertifikasi distributor resmi Indonesia.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">
-            <i class="fas fa-truck"></i>
+            <i class="fas fa-rocket"></i>
           </div>
-          <h3>Pengiriman Kilat 1 Hari</h3>
-          <p>Gratis ongkir ke seluruh Indonesia. COD tersedia.</p>
+          <h3>PENGIRIMAN <span class="glitch-hover">1 HARI</span></h3>
+          <p>Gratis ongkir nasional. COD & pembayaran kripto tersedia.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">
-            <i class="fas fa-credit-card"></i>
+            <i class="fas fa-infinity"></i>
           </div>
-          <h3>Cicilan 0% hingga 24 Bulan</h3>
-          <p>Kerja sama dengan 15+ bank terkemuka.</p>
+          <h3>CICILAN 0% SAMPAI 24X</h3>
+          <p>Kerja sama dengan 15+ bank & platform fintech terkemuka.</p>
         </div>
       </div>
     </div>
@@ -792,31 +894,31 @@
   <section class="section testimonials" id="testimonials">
     <div class="container">
       <div class="section-header">
-        <h2>Ulasan Pelanggan</h2>
-        <p>Lebih dari 12.500+ pelanggan puas sejak 2020.</p>
+        <h2>TESTIMONIAL PELANGGAN</h2>
+        <p>12.500+ pengguna puas sejak 2020. Data real, tanpa filter.</p>
       </div>
       <div class="testimonial-grid">
         <div class="testimonial-card">
-          <p class="testimonial-content">Pengemasan sangat rapi, barang original 100%, dan CS-nya responsif banget. Langsung jadi langganan!</p>
+          <p class="testimonial-content">Pengemasan anti-shock level militer, verifikasi keaslian via NFC instan, CS 24/7 via Telegram. Ini baru toko tech yang *next-level*.</p>
           <div class="testimonial-author">
             <div class="author-avatar">
-              <img src="https://i.pravatar.cc/100?img=1" alt="Budi Santoso">
+              <img src="https://i.pravatar.cc/200?img=12" alt="Aryo Wicaksono">
             </div>
             <div class="author-info">
-              <h4>Budi Santoso</h4>
-              <p>Jakarta Selatan</p>
+              <h4>ARYO WICAKSONO</h4>
+              <p>Startup Founder • Jakarta</p>
             </div>
           </div>
         </div>
         <div class="testimonial-card">
-          <p class="testimonial-content">Barang datang lebih cepat dari estimasi. Bonus casing-nya keren juga. Sangat direkomendasikan!</p>
+          <p class="testimonial-content">S24 Ultra sampai dalam 9 jam! Bonus earbuds-nya ternyata edisi terbatas collab dengan designer Jepang. Respect.</p>
           <div class="testimonial-author">
             <div class="author-avatar">
-              <img src="https://i.pravatar.cc/100?img=5" alt="Siti Rahayu">
+              <img src="https://i.pravatar.cc/200?img=33" alt="Dinda Maharani">
             </div>
             <div class="author-info">
-              <h4>Siti Rahayu</h4>
-              <p>Bandung</p>
+              <h4>DINDA MAHARANI</h4>
+              <p>Content Creator • Bandung</p>
             </div>
           </div>
         </div>
@@ -827,9 +929,9 @@
   <!-- CTA -->
   <section class="cta">
     <div class="container">
-      <h2>Siap Upgrade Pengalaman Smartphone Anda?</h2>
-      <p>Join 50.000+ pengguna yang telah menikmati kecepatan, keamanan, dan layanan premium dari MobileX.</p>
-      <a href="#products" class="btn btn-primary" style="background: white; color: var(--primary); font-weight: 700;">Mulai Belanja Sekarang</a>
+      <h2>READY FOR THE <span style="color:var(--neon-pink)">FUTURE</span>?</h2>
+      <p>Bergabunglah dengan 50.000+ early adopters yang telah upgrade ke perangkat generasi berikutnya.</p>
+      <a href="#products" class="btn glitch-hover">JELAJAHI KOLEKSI</a>
     </div>
   </section>
 
@@ -838,79 +940,66 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-col">
-          <h4>MobileX</h4>
-          <p style="color:#a0a0a5; margin-top:16px; max-width:280px;">
-            Toko handphone premium dengan layanan terbaik sejak 2020. Resmi, aman, dan terpercaya.
+          <h4>MOBILE<span style="color:var(--neon-cyan)">X</span></h4>
+          <p style="color:var(--text-secondary); margin-top:16px; max-width:280px; font-family:'Exo 2', sans-serif;">
+            Cyber-hub resmi untuk perangkat premium. Beroperasi sejak 2020. Lisensi: SIUP 12345/2020/PMDN.
           </p>
         </div>
         <div class="footer-col">
-          <h4>Produk</h4>
+          <h4>PRODUK</h4>
           <ul class="footer-links">
-            <li><a href="#">iPhone</a></li>
-            <li><a href="#">Samsung</a></li>
-            <li><a href="#">Google Pixel</a></li>
-            <li><a href="#">Xiaomi</a></li>
-            <li><a href="#">Aksesoris</a></li>
+            <li><a href="#">iPhone 15 Series</a></li>
+            <li><a href="#">Galaxy S24 / Z Fold</a></li>
+            <li><a href="#">Pixel 8 / Tensor G3</a></li>
+            <li><a href="#">Xiaomi 14 Ultra</a></li>
+            <li><a href="#">Aksesoris Pro</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Bantuan</h4>
+          <h4>BANTUAN</h4>
           <ul class="footer-links">
-            <li><a href="#">Cara Belanja</a></li>
+            <li><a href="#">Panduan Belanja</a></li>
+            <li><a href="#">Kebijakan Garansi</a></li>
             <li><a href="#">Syarat & Ketentuan</a></li>
-            <li><a href="#">Kebijakan Privasi</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Hubungi Kami</a></li>
+            <li><a href="#">FAQ Teknis</a></li>
+            <li><a href="#">Live Chat 24/7</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4>Kontak Kami</h4>
+          <h4>KONTAK</h4>
           <ul class="footer-links" style="list-style: none;">
-            <li><i class="fas fa-map-marker-alt"></i> &nbsp; Menara Rajawali, Jakarta</li>
-            <li><i class="fas fa-phone"></i> &nbsp; (021) 500-1234</li>
-            <li><i class="fas fa-envelope"></i> &nbsp; hello@mobilex.id</li>
-            <li style="margin-top:16px;">
-              <a href="#" style="margin-right:12px; color:#a0a0a5;"><i class="fab fa-instagram fa-lg"></i></a>
-              <a href="#" style="margin-right:12px; color:#a0a0a5;"><i class="fab fa-twitter fa-lg"></i></a>
-              <a href="#" style="margin-right:12px; color:#a0a0a5;"><i class="fab fa-tiktok fa-lg"></i></a>
+            <li><i class="fas fa-map-marker-alt" style="color:var(--neon-cyan)"></i> &nbsp; Menara Cyber 2, SCBD, Jakarta</li>
+            <li><i class="fas fa-phone" style="color:var(--neon-cyan)"></i> &nbsp; (021) 500-1234</li>
+            <li><i class="fas fa-envelope" style="color:var(--neon-cyan)"></i> &nbsp; nexus@mobilex.id</li>
+            <li style="margin-top:20px;">
+              <a href="#" style="margin-right:14px; color:var(--neon-pink);"><i class="fab fa-instagram fa-lg"></i></a>
+              <a href="#" style="margin-right:14px; color:var(--neon-cyan);"><i class="fab fa-twitter fa-lg"></i></a>
+              <a href="#" style="margin-right:14px; color:var(--neon-purple);"><i class="fab fa-tiktok fa-lg"></i></a>
+              <a href="#" style="color:var(--neon-pink);"><i class="fab fa-discord fa-lg"></i></a>
             </li>
           </ul>
         </div>
       </div>
       <div class="copyright">
-        <p>&copy; 2025 MobileX. All rights reserved. PT MobileX Indonesia — SIUP: 12345/2020/PMDN</p>
+        <p>&copy; 2025 MobileX. All systems operational. <span style="color:var(--neon-cyan)">v3.1.4</span></p>
       </div>
     </div>
   </footer>
 
-  <!-- JavaScript -->
   <script>
     // Header scroll effect
     window.addEventListener('scroll', () => {
       const header = document.getElementById('header');
-      header.classList.toggle('header-scrolled', window.scrollY > 50);
+      if (window.scrollY > 50) {
+        header.style.background = 'rgba(5, 5, 10, 0.95)';
+        header.style.boxShadow = '0 6px 25px rgba(0, 0, 0, 0.5)';
+      } else {
+        header.style.background = 'rgba(10, 10, 20, 0.92)';
+        header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.4)';
+      }
     });
 
-    // Theme toggle
-    const themeToggle = document.getElementById('themeToggle');
-    const isDarkMode = localStorage.getItem('darkMode') === 'true';
-    
-    // Apply saved theme
-    if (isDarkMode) {
-      document.body.classList.add('dark-mode');
-      themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-    }
-
-    themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      const isNowDark = document.body.classList.contains('dark-mode');
-      localStorage.setItem('darkMode', isNowDark);
-      themeToggle.innerHTML = isNowDark 
-        ? '<i class="fas fa-sun"></i>' 
-        : '<i class="fas fa-moon"></i>';
-    });
-
-    // Smooth scroll for anchor links
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -923,7 +1012,17 @@
         }
       });
     });
+
+    // Add subtle hover glitch to buttons and cards
+    document.querySelectorAll('.btn, .product-card, .category-card').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        el.classList.add('glitch-hover');
+      });
+      el.addEventListener('animationend', () => {
+        el.classList.remove('glitch-hover');
+      });
+    });
   </script>
 
 </body>
-</html>
+              </html>
