@@ -65,7 +65,7 @@
       @page { size: A4; margin: 0; }
     }
 
-    /* Emblem WAJIB LEGALISASI di tengah atas */
+    /* Emblem LEGALISASI di tengah atas — FOKUS UTAMA */
     .legalisasi-badge {
       position: absolute;
       top: 10px;
@@ -85,7 +85,7 @@
       object-fit: contain;
     }
 
-    /* Header: Logo Kiri & Kanan */
+    /* Header: Logo Kiri & Kanan — SIMETRIS */
     .header-top {
       display: flex;
       justify-content: space-between;
@@ -94,14 +94,18 @@
       margin-bottom: 10px;
     }
 
-    .logo-left {
+    .logo-left, .logo-right {
       width: 80px;
       height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    .logo-right {
-      width: 100px;
-      height: 80px;
+    .logo-left img, .logo-right img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
     }
 
     /* Judul Surat */
@@ -260,23 +264,13 @@
       color: var(--gray-700);
     }
 
-    .stamp-signature {
-      display: flex;
-      justify-content: flex-end;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .stamp-signature img {
-      height: 60px;
-      object-fit: contain;
-    }
-
-    /* TTD DIPERBESAR */
+    /* HANYA TTD ASLI — TANPA STEMPSEL ATAU GAMBAR LAIN */
     .signature-img {
-      height: 120px;
+      height: 150px;
       object-fit: contain;
       margin-top: 8px;
+      border: none;
+      background: transparent;
     }
 
     /* Copyright */
@@ -311,15 +305,19 @@
   <!-- Watermark -->
   <img src="https://i.ibb.co.com/p6PVKLdj/IMG-20251209-083323.jpg" alt="Watermark Bea Cukai" class="watermark-bg">
 
-  <!-- Emblem WAJIB LEGALISASI di tengah atas -->
+  <!-- ✅ EMBLEM LEGALISASI DI TENGAH ATAS — UPDATE KE LOGO BARU -->
   <div class="legalisasi-badge">
-    <img src="https://i.ibb.co.com/Q7cSHKMv/IMG-20251209-083323.jpg" alt="Wajib Legalisasi">
+    <img src="https://i.ibb.co.com/FktbK1YC/IMG-20251215-214800.jpg" alt="Stempel Legalisasi">
   </div>
 
-  <!-- Header Top: Logo Kiri & Kanan -->
+  <!-- Header Top: Logo Kiri & Kanan — SIMETRIS 80x80 -->
   <div class="header-top">
-    <img src="https://i.ibb.co.com/KjyDDGss/IMG-20251209-070009.jpg" alt="Logo Bea Cukai" class="logo-left">
-    <img src="https://i.ibb.co.com/tPxTpvRN/IMG-20251209-070039.jpg" alt="Logo Kemenkeu" class="logo-right">
+    <div class="logo-left">
+      <img src="https://i.ibb.co.com/KjyDDGss/IMG-20251209-070009.jpg" alt="Logo Bea Cukai">
+    </div>
+    <div class="logo-right">
+      <img src="https://i.ibb.co.com/tPxTpvRN/IMG-20251209-070039.jpg" alt="Logo Kemenkeu">
+    </div>
   </div>
 
   <!-- Judul Surat -->
@@ -409,7 +407,7 @@
     Telepon: (0411) 3615447 / 314602 | Email: <a href="mailto:bcmakassar@customs.go.id">bcmakassar@customs.go.id</a>
   </p>
 
-  <!-- Footer: QR Code + TTD + Stempel -->
+  <!-- Footer: QR Code + HANYA TTD ASLI -->
   <div class="footer-section">
     <div class="qr-box">
       <img src="https://i.ibb.co.com/kV2t1qYB/IMG-20251215-213002.jpg" alt="QR Code Verifikasi">
@@ -419,10 +417,8 @@
       <div class="signature-date">Makassar, 09 Desember 2025</div>
       <div>a.n. Kepala Kantor,</div>
       <div>Kepala Seksi Penindakan</div>
-      <div class="stamp-signature">
-        <img src="https://i.ibb.co.com/FktbK1YC/IMG-20251215-214800.jpg" alt="Stempel">
-        <img src="https://i.ibb.co.com/qF4G76Rz/IMG-20251215-222532-817.jpg" alt="Tanda Tangan" class="signature-img">
-      </div>
+      <!-- ✅ HANYA TTD ASLI — TANPA STEMPSEL -->
+      <img src="https://i.ibb.co.com/qF4G76Rz/IMG-20251215-222532-817.jpg" alt="Tanda Tangan Asli" class="signature-img">
       <div class="signature-name">NURHIDAYAT, S.E., M.M.</div>
       <div class="signature-nip">NIP. 19790115 200501 1 002</div>
     </div>
