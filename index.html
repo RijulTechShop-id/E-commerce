@@ -1,33 +1,21 @@
 <!DOCTYPE html>
-<html lang="id" dir="ltr">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="MobileX — Toko Resmi Handphone Premium: iPhone, Samsung Galaxy, Google Pixel & lebih. Garansi Resmi, Gratis Ongkir, COD." />
-  <title>MobileX | Cyberpunk Smartphone Hub</title>
-  
-  <!-- Google Fonts: Orbitron (Headings) + Exo 2 (Body) -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SURAT PEMBERITAHUAN - BEA CUKAI MAKASSAR</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
   <style>
-    /* ===== CYBERPUNK THEME VARIABLES ===== */
     :root {
-      --neon-purple: #b967ff;
-      --neon-cyan: #00f0ff;
-      --neon-pink: #ff2a6d;
-      --dark-bg: #0a0a14;
-      --darker-bg: #05050a;
-      --card-bg: #0f0f1a;
-      --text-primary: #e0e0ff;
-      --text-secondary: #a0a0c0;
-      --glow-purple: 0 0 12px rgba(185, 103, 255, 0.6), 0 0 24px rgba(185, 103, 255, 0.3);
-      --glow-cyan: 0 0 12px rgba(0, 240, 255, 0.6), 0 0 24px rgba(0, 240, 255, 0.3);
-      --glow-pink: 0 0 12px rgba(255, 42, 109, 0.6), 0 0 24px rgba(255, 42, 109, 0.3);
-      --radius: 14px;
-      --transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      --bc-blue: #002B5C;
+      --bc-gold: #D4AF37;
+      --gray-900: #222;
+      --gray-700: #444;
+      --gray-500: #666;
+      --gray-300: #ccc;
+      --gray-200: #eee;
+      --bg-light: #fafbff;
+      --border: #d5d9e0;
     }
 
     * {
@@ -36,993 +24,422 @@
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
-      font-family: 'Exo 2', sans-serif;
-      background-color: var(--dark-bg);
-      color: var(--text-primary);
+      font-family: 'Nunito', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--gray-900);
       line-height: 1.6;
-      overflow-x: hidden;
-      position: relative;
+      background-color: #f0f2f5;
+      padding: 12px;
     }
 
-    /* Subtle scanline overlay for cyberpunk vibe */
-    body::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: repeating-linear-gradient(
-        0deg,
-        rgba(0,0,0,0.03),
-        rgba(0,0,0,0.03) 1px,
-        transparent 1px,
-        transparent 2px
-      );
-      pointer-events: none;
-      z-index: 10000;
-    }
-
-    h1, h2, h3, h4 {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      text-transform: uppercase;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .container {
-      width: 100%;
-      max-width: 1320px;
+    .document {
+      width: 210mm;
+      min-height: 297mm;
       margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 16px 36px;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 16px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: var(--transition);
-      border: none;
-      outline: none;
+      background: white;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
       position: relative;
       overflow: hidden;
-      font-family: 'Orbitron', sans-serif;
-      letter-spacing: 1px;
+      padding: 25mm 20mm 30mm;
     }
 
-    .btn::before {
-      content: '';
+    .watermark {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255,255,255,0.1);
-      transform: translateX(-100%);
-      transition: transform 0.4s;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-35deg);
+      opacity: 0.02;
+      width: 600px;
+      z-index: 0;
+      pointer-events: none;
     }
 
-    .btn:hover::before {
-      transform: translateX(0);
+    @media print {
+      body { padding: 0; background: white; }
+      .document {
+        box-shadow: none;
+        padding: 25mm 20mm 30mm;
+      }
+      .watermark, .print-hide { display: none !important; }
+      @page { size: A4; margin: 0; }
     }
 
-    .btn-primary {
-      background: var(--neon-purple);
-      color: black;
-      box-shadow: var(--glow-purple);
-      text-shadow: 0 0 6px rgba(0,0,0,0.5);
-    }
-    .btn-primary:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: var(--glow-purple), 0 10px 30px rgba(185, 103, 255, 0.4);
-    }
-
-    .btn-outline {
-      background: transparent;
-      border: 2px solid var(--neon-cyan);
-      color: var(--neon-cyan);
-      box-shadow: var(--glow-cyan);
-      text-shadow: 0 0 6px rgba(0,240,255,0.5);
-    }
-    .btn-outline:hover {
-      background: rgba(0, 240, 255, 0.1);
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: var(--glow-cyan), 0 10px 30px rgba(0, 240, 255, 0.2);
-    }
-
-    /* Glitch effect on hover (subtle) */
-    .glitch-hover {
+    .header {
+      text-align: center;
+      margin-bottom: 22px;
       position: relative;
-    }
-    .glitch-hover:hover {
-      animation: glitch 0.3s ease-in-out 1;
-    }
-    @keyframes glitch {
-      0% { transform: translate(0); }
-      20% { transform: translate(-3px, 3px); }
-      40% { transform: translate(-3px, -3px); }
-      60% { transform: translate(3px, 3px); }
-      80% { transform: translate(3px, -3px); }
-      100% { transform: translate(0); }
+      z-index: 1;
     }
 
-    /* ===== HEADER ===== */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(10, 10, 20, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(185, 103, 255, 0.2);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-    }
-
-    .navbar {
+    .logos {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 0;
+      justify-content: center;
+      gap: 28px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
     }
 
     .logo {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 800;
-      font-size: 32px;
-      color: white;
-      text-decoration: none;
-      text-shadow: var(--glow-purple);
-      letter-spacing: -1px;
-    }
-    .logo span {
-      color: var(--neon-cyan);
-      text-shadow: var(--glow-cyan);
-    }
-
-    .nav-links {
       display: flex;
-      gap: 28px;
-    }
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-secondary);
-      font-weight: 500;
-      font-size: 16px;
-      position: relative;
-      padding: 6px 0;
-      font-family: 'Orbitron', sans-serif;
-      letter-spacing: 0.5px;
-    }
-    .nav-links a:hover {
-      color: var(--neon-cyan);
-      text-shadow: var(--glow-cyan);
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--neon-cyan);
-      transition: var(--transition);
-    }
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .nav-actions {
-      display: flex;
-      gap: 16px;
+      flex-direction: column;
       align-items: center;
+      width: 120px;
     }
-    .cart-icon {
-      position: relative;
-      color: var(--text-primary);
-      font-size: 20px;
-      transition: var(--transition);
+
+    .logo img {
+      height: 54px;
+      object-fit: contain;
     }
-    .cart-icon:hover {
-      color: var(--neon-pink);
-      text-shadow: var(--glow-pink);
-    }
-    .cart-badge {
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      background: var(--neon-pink);
-      color: black;
+
+    .logo-caption {
       font-size: 10px;
-      font-weight: 800;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Orbitron', sans-serif;
-      box-shadow: var(--glow-pink);
+      color: var(--gray-500);
+      margin-top: 4px;
     }
 
-    /* ===== HERO ===== */
-    .hero {
-      padding: 180px 0 120px;
-      background: linear-gradient(135deg, #0a0a1a 0%, #0f0f2a 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -150px;
-      right: -150px;
-      width: 700px;
-      height: 700px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(185, 103, 255, 0.15) 0%, transparent 70%);
-      z-index: -1;
-    }
-    .hero-content {
-      max-width: 680px;
-      margin-bottom: 60px;
-    }
-    .hero h1 {
-      font-size: 64px;
-      line-height: 1.1;
-      margin-bottom: 24px;
-      color: white;
-      text-shadow: 0 0 16px rgba(185, 103, 255, 0.7);
-    }
-    .hero p {
-      font-size: 20px;
-      color: var(--text-secondary);
-      margin-bottom: 32px;
-      max-width: 650px;
-    }
-    .hero-btns {
-      display: flex;
-      gap: 20px;
+    .slogan {
+      margin-top: 8px;
+      font-weight: 600;
+      color: var(--bc-blue);
     }
 
-    .hero-device {
-      position: relative;
+    .slogan img {
+      height: 28px;
+    }
+
+    .letter-head {
       text-align: center;
-    }
-    .hero-device img {
-      max-width: 520px;
-      margin: 0 auto;
-      filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4)) 
-               drop-shadow(0 0 20px rgba(185, 103, 255, 0.3));
-      border-radius: 8px;
+      margin: 16px 0 24px;
     }
 
-    /* ===== SECTIONS ===== */
-    .section {
-      padding: 100px 0;
+    .letter-title {
+      font-family: 'Merriweather', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--bc-blue);
+      line-height: 1.3;
+      margin-bottom: 4px;
     }
-    .section-header {
-      text-align: center;
-      max-width: 750px;
-      margin: 0 auto 60px;
+
+    .letter-meta {
+      font-size: 14px;
+      color: var(--gray-700);
     }
-    .section-header h2 {
-      font-size: 48px;
-      margin-bottom: 20px;
+
+    .badge {
+      display: inline-block;
+      background: var(--bc-blue);
       color: white;
-      text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
-    }
-    .section-header p {
-      font-size: 18px;
-      color: var(--text-secondary);
-    }
-
-    /* Categories */
-    .category-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 32px;
-    }
-    .category-card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-      transition: var(--transition);
-      border: 1px solid rgba(185, 103, 255, 0.2);
-    }
-    .category-card:hover {
-      transform: translateY(-10px) rotateX(5deg);
-      box-shadow: var(--glow-purple), 0 15px 35px rgba(0, 0, 0, 0.6);
-      border-color: var(--neon-purple);
-    }
-    .category-img {
-      height: 220px;
-      overflow: hidden;
-    }
-    .category-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: var(--transition);
-    }
-    .category-card:hover .category-img img {
-      transform: scale(1.1) rotate(2deg);
-    }
-    .category-content {
-      padding: 28px;
-      text-align: center;
-    }
-    .category-content h3 {
-      font-size: 26px;
-      margin-bottom: 12px;
-      color: white;
-    }
-    .category-content p {
-      color: var(--text-secondary);
-      font-size: 16px;
-    }
-
-    /* Products */
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 36px;
-    }
-    .product-card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-      transition: var(--transition);
-      border: 1px solid rgba(0, 240, 255, 0.15);
-    }
-    .product-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: var(--glow-cyan), 0 20px 40px rgba(0, 0, 0, 0.7);
-      border-color: var(--neon-cyan);
-    }
-    .product-badge {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      background: var(--neon-pink);
-      color: black;
-      font-size: 12px;
-      font-weight: 800;
-      padding: 6px 16px;
+      padding: 4px 16px;
       border-radius: 4px;
-      z-index: 2;
-      font-family: 'Orbitron', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      box-shadow: var(--glow-pink);
+      font-weight: 600;
+      margin: 0 6px;
     }
-    .product-img {
-      position: relative;
-      height: 260px;
-      background: #080812;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+
+    .section {
+      margin-bottom: 20px;
     }
-    .product-img img {
-      max-height: 85%;
-      max-width: 85%;
-      transition: var(--transition);
-      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+
+    .recipient {
+      background: var(--bg-light);
+      padding: 16px;
+      border-left: 4px solid var(--bc-blue);
+      font-size: 14px;
+      margin-bottom: 22px;
     }
-    .product-card:hover .product-img img {
-      transform: scale(1.05);
+
+    h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--bc-blue);
+      margin: 24px 0 12px;
+      padding-bottom: 4px;
+      border-bottom: 2px solid var(--bc-gold);
+      page-break-after: avoid;
     }
-    .product-info {
-      padding: 28px;
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0;
+      font-size: 14px;
+      page-break-inside: avoid;
     }
-    .product-info h3 {
-      font-size: 24px;
-      margin-bottom: 12px;
+
+    th, td {
+      padding: 10px 14px;
+      text-align: left;
+      border: 1px solid var(--border);
+    }
+
+    th {
+      background: var(--bc-blue);
       color: white;
+      font-weight: 600;
+      width: 35%;
     }
-    .product-meta {
+
+    tbody tr:nth-child(even) {
+      background-color: #fbfcfe;
+    }
+
+    tr.warning td {
+      background-color: #fff0f0 !important;
+      color: #c00;
+      font-weight: 600;
+    }
+
+    .numeric {
+      font-feature-settings: "tnum";
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .total-row {
+      font-weight: bold;
+      background-color: #f0f5ff !important;
+    }
+
+    .note-box {
+      background: #f0f7ff;
+      border-left: 4px solid var(--bc-blue);
+      padding: 14px;
+      border-radius: 0 4px 4px 0;
+      margin: 16px 0;
+      font-size: 13px;
+    }
+
+    .consequence {
+      background: #fff8f8;
+      border-left: 4px solid #e74c3c;
+      padding: 14px;
+      border-radius: 0 4px 4px 0;
+      margin: 20px 0;
+      font-weight: 600;
+      color: #c00;
+    }
+
+    .signature {
+      margin-top: 36px;
+      text-align: right;
+    }
+
+    .signature-place-date {
+      margin-bottom: 40px;
+    }
+
+    .signature-line {
+      width: 220px;
+      height: 1px;
+      background: #555;
+      margin-left: auto;
+      margin-bottom: 6px;
+    }
+
+    .signature-name {
+      font-weight: 600;
+    }
+
+    .signature-nip {
+      font-size: 13px;
+      color: var(--gray-700);
+    }
+
+    .signature img {
+      height: 60px;
+      margin-top: 4px;
+      object-fit: contain;
+    }
+
+    .doc-footer {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-    .price {
-      font-size: 26px;
-      font-weight: 700;
-      color: var(--neon-cyan);
-      font-family: 'Orbitron', sans-serif;
-    }
-    .rating {
-      color: #ffb400;
-      font-size: 14px;
-    }
-    .product-actions .btn {
-      width: 100%;
-      font-size: 15px;
+      gap: 16px;
+      margin-top: 32px;
+      padding-top: 18px;
+      border-top: 1px solid var(--gray-200);
+      flex-wrap: wrap;
     }
 
-    /* Features */
-    .features {
-      background: linear-gradient(145deg, #0a0a18 0%, #0d0d20 100%);
-    }
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 36px;
-    }
-    .feature-card {
+    .footer-item {
       text-align: center;
-      padding: 40px 32px;
-      border-radius: var(--radius);
-      background: rgba(15, 15, 30, 0.6);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(0, 240, 255, 0.1);
-      transition: var(--transition);
-    }
-    .feature-card:hover {
-      background: rgba(30, 20, 50, 0.7);
-      transform: translateY(-8px);
-      border-color: var(--neon-cyan);
-      box-shadow: var(--glow-cyan), 0 15px 30px rgba(0, 0, 0, 0.5);
-    }
-    .feature-icon {
-      width: 80px;
-      height: 80px;
-      background: rgba(0, 240, 255, 0.1);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 28px;
-      font-size: 32px;
-      color: var(--neon-cyan);
-      box-shadow: var(--glow-cyan);
-    }
-    .feature-card h3 {
-      font-size: 26px;
-      margin-bottom: 16px;
-      color: white;
-    }
-    .feature-card p {
-      color: var(--text-secondary);
-      font-size: 16px;
+      flex: 1;
+      min-width: 110px;
     }
 
-    /* Testimonials */
-    .testimonials {
-      background: linear-gradient(to bottom, #0a0a18 0%, #0c0c20 100%);
-    }
-    .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-      gap: 36px;
-      justify-content: center;
-    }
-    .testimonial-card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      padding: 36px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-      position: relative;
-      border: 1px solid rgba(185, 103, 255, 0.2);
-    }
-    .testimonial-card::before {
-      content: '"';
-      position: absolute;
-      top: 24px;
-      left: 28px;
-      font-size: 90px;
-      font-family: 'Orbitron', sans-serif;
-      color: rgba(185, 103, 255, 0.15);
-      line-height: 1;
-    }
-    .testimonial-content {
-      font-size: 19px;
-      font-style: normal;
-      margin-bottom: 28px;
-      color: var(--text-primary);
-      font-family: 'Exo 2', sans-serif;
-      line-height: 1.7;
-    }
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-    }
-    .author-avatar {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin-right: 20px;
-      border: 2px solid var(--neon-purple);
-    }
-    .author-info h4 {
-      font-size: 20px;
-      margin-bottom: 6px;
-      color: white;
-    }
-    .author-info p {
-      color: var(--neon-cyan);
-      font-size: 15px;
+    .footer-item img {
+      max-height: 44px;
+      object-fit: contain;
     }
 
-    /* CTA */
-    .cta {
-      background: linear-gradient(135deg, #0a0a20 0%, #1a0a30 100%);
-      text-align: center;
-      padding: 90px 0;
-      border-top: 1px solid rgba(185, 103, 255, 0.3);
-      border-bottom: 1px solid rgba(0, 240, 255, 0.3);
-    }
-    .cta h2 {
-      font-size: 52px;
-      margin-bottom: 28px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-      color: white;
-      text-shadow: 0 0 16px rgba(0, 240, 255, 0.8);
-    }
-    .cta p {
-      font-size: 20px;
-      max-width: 650px;
-      margin: 0 auto 36px;
-      color: var(--text-secondary);
-    }
-    .cta .btn {
-      background: var(--neon-cyan);
-      color: black;
-      box-shadow: var(--glow-cyan);
-    }
-    .cta .btn:hover {
-      background: white;
-      color: #0a0a20;
+    .footer-label {
+      font-size: 11px;
+      color: var(--gray-500);
+      margin-top: 6px;
     }
 
-    /* Footer */
-    footer {
-      background: var(--darker-bg);
-      color: var(--text-secondary);
-      padding: 80px 0 50px;
-      border-top: 1px solid rgba(0, 240, 255, 0.1);
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 40px;
-      margin-bottom: 60px;
-    }
-    .footer-col h4 {
-      color: white;
-      font-size: 20px;
-      margin-bottom: 24px;
-      font-weight: 700;
-      font-family: 'Orbitron', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .footer-links {
-      list-style: none;
-    }
-    .footer-links li {
-      margin-bottom: 14px;
-    }
-    .footer-links a {
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: var(--transition);
-      font-family: 'Exo 2', sans-serif;
-    }
-    .footer-links a:hover {
-      color: var(--neon-cyan);
-      text-shadow: var(--glow-cyan);
-    }
     .copyright {
+      margin-top: 22px;
       text-align: center;
-      padding-top: 40px;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      font-size: 14px;
-      color: #6a6a8a;
+      font-size: 11px;
+      color: var(--gray-500);
+      padding-top: 12px;
+      border-top: 1px solid var(--gray-200);
+      line-height: 1.5;
     }
 
-    /* Responsive */
-    @media (max-width: 900px) {
-      .hero {
-        text-align: center;
-        padding: 150px 0 80px;
-      }
-      .hero-content {
-        margin: 0 auto 50px;
-      }
-      .hero-btns {
-        justify-content: center;
-      }
-      .hero-device {
-        margin-top: 50px;
-      }
-      .hero h1 {
-        font-size: 48px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .navbar {
-        flex-wrap: wrap;
-      }
-      .nav-links {
-        order: 3;
-        width: 100%;
-        justify-content: center;
-        margin-top: 16px;
-      }
-      .hero h1 {
-        font-size: 38px;
-      }
-      .hero-btns {
-        flex-wrap: wrap;
-      }
-      .section-header h2 {
-        font-size: 36px;
-      }
-      .testimonial-grid,
-      .products-grid,
-      .category-grid {
-        grid-template-columns: 1fr;
-      }
+    .print-btn {
+      display: block;
+      margin: 24px auto;
+      padding: 10px 28px;
+      background: var(--bc-blue);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 15px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header id="header">
-    <div class="container">
-      <nav class="navbar">
-        <a href="#" class="logo glitch-hover">Mobile<span>X</span></a>
-        <div class="nav-links">
-          <a href="#products">Produk</a>
-          <a href="#categories">Kategori</a>
-          <a href="#features">Keunggulan</a>
-          <a href="#testimonials">Ulasan</a>
-          <a href="#contact">Bantuan</a>
-        </div>
-        <div class="nav-actions">
-          <a href="#" class="cart-icon" aria-label="Keranjang belanja">
-            <i class="fas fa-shopping-bag"></i>
-            <span class="cart-badge">3</span>
-          </a>
-        </div>
-      </nav>
-    </div>
-  </header>
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <h1>SMARTPHONE <span style="color:var(--neon-cyan)">NEXT-GEN</span>, DELIVERED.</h1>
-        <p>iPhone 15 Pro, Galaxy S24 Ultra, Pixel 8 Pro — garansi resmi, pengiriman kilat, cicilan 0%. Dibangun untuk masa depan.</p>
-        <div class="hero-btns">
-          <a href="#products" class="btn btn-primary">Jelajahi Produk</a>
-          <a href="#categories" class="btn btn-outline">Kategori</a>
-        </div>
+<div class="document">
+  <img src="https://i.ibb.co.com/p6PVKLdj/IMG-20251209-083323.jpg" alt="Watermark Bea Cukai" class="watermark">
+
+  <div class="header">
+    <div class="logos">
+      <div class="logo">
+        <img src="https://i.ibb.co.com/tPxTpvRN/IMG-20251209-070039.jpg" alt="DJP">
+        <div class="logo-caption">DIREKTORAT JENDERAL PAJAK</div>
       </div>
-      <div class="hero-device">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/IPhone_15_Pro_—_Black_Titanium_%28Back%29.png/1200px-IPhone_15_Pro_—_Black_Titanium_%28Back%29.png" alt="iPhone 15 Pro Black Titanium">
+      <div class="logo">
+        <img src="https://i.ibb.co.com/KjyDDGss/IMG-20251209-070009.jpg" alt="Bea Cukai">
+        <div class="logo-caption">DIREKTORAT JENDERAL BEA DAN CUKAI</div>
+      </div>
+      <div class="logo">
+        <img src="https://i.ibb.co.com/4wcBBxK0/IMG-20251215-205820-651.jpg" alt="ISO">
+        <div class="logo-caption">SERTIFIKAT ISO 9001:2015</div>
       </div>
     </div>
-  </section>
-
-  <!-- Categories -->
-  <section class="section" id="categories">
-    <div class="container">
-      <div class="section-header">
-        <h2>KATEGORI UTAMA</h2>
-        <p>Teknologi sesuai gaya hidup digital Anda.</p>
-      </div>
-      <div class="category-grid">
-        <div class="category-card">
-          <div class="category-img">
-            <img src="https://images.samsung.com/is/image/samsung/p6pim/id/s24-ultra-5g-sm-s928bzkgxid/front/sm-s928bzkgxid-thumb-537431662?$650_519_PNG$" alt="Samsung Galaxy S24 Ultra">
-          </div>
-          <div class="category-content">
-            <h3>FLAGSHIP ELITE</h3>
-            <p>Performa AI, kamera pro-grade, desain futuristik</p>
-          </div>
-        </div>
-        <div class="category-card">
-          <div class="category-img">
-            <img src="https://images.unsplash.com/photo-1699304890098-86c806e7d5d8?auto=format&fit=crop&w=600&h=400&q=85" alt="Mid-Range Smartphones">
-          </div>
-          <div class="category-content">
-            <h3>MID-RANGE POWER</h3>
-            <p>Performa tinggi tanpa harga flagship</p>
-          </div>
-        </div>
-        <div class="category-card">
-          <div class="category-img">
-            <img src="https://images.unsplash.com/photo-1606914053599-4ce34d5e7e7f?auto=format&fit=crop&w=600&h=400&q=85" alt="Tech Accessories">
-          </div>
-          <div class="category-content">
-            <h3>TECH ACCESSORIES</h3>
-            <p>Earbuds TWS, powerbank GaN, smartwatch</p>
-          </div>
-        </div>
-      </div>
+    <div class="slogan">
+      <img src="https://i.ibb.co.com/1Jf993mY/IMG-20251209-084035.jpg" alt="Slogan Resmi">
     </div>
-  </section>
+  </div>
 
-  <!-- Featured Products -->
-  <section class="section" id="products" style="background: linear-gradient(140deg, #0a0a18 0%, #0d0d25 100%);">
-    <div class="container">
-      <div class="section-header">
-        <h2>PRODUK UNGGULAN</h2>
-        <p>Terjual lebih dari 1.200 unit minggu ini — stok terbatas!</p>
-      </div>
-      <div class="products-grid">
-        <!-- Product 1: iPhone 15 Pro -->
-        <div class="product-card">
-          <div class="product-img">
-            <span class="product-badge">BARU</span>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/IPhone_15_Pro_—_Natural_Titanium.png/1200px-IPhone_15_Pro_—_Natural_Titanium.png" alt="iPhone 15 Pro Natural Titanium">
-          </div>
-          <div class="product-info">
-            <h3>iPhone 15 Pro</h3>
-            <div class="product-meta">
-              <span class="price">Rp 18.999.000</span>
-              <span class="rating">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-                (142)
-              </span>
-            </div>
-            <div class="product-actions">
-              <a href="#" class="btn btn-primary">BELI SEKARANG</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Product 2: Samsung S24 Ultra -->
-        <div class="product-card">
-          <div class="product-img">
-            <span class="product-badge">TERLARIS</span>
-            <img src="https://images.samsung.com/is/image/samsung/p6pim/id/s24-ultra-5g-sm-s928bzkgxid/front/sm-s928bzkgxid-thumb-537431662?$1300_1038_PNG$" alt="Samsung Galaxy S24 Ultra">
-          </div>
-          <div class="product-info">
-            <h3>S24 Ultra</h3>
-            <div class="product-meta">
-              <span class="price">Rp 17.499.000</span>
-              <span class="rating">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                (98)
-              </span>
-            </div>
-            <div class="product-actions">
-              <a href="#" class="btn btn-primary">BELI SEKARANG</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Product 3: Google Pixel 8 Pro -->
-        <div class="product-card">
-          <div class="product-img">
-            <span class="product-badge">DISKON 8%</span>
-            <img src="https://lh3.googleusercontent.com/VsUuUeKvQ5jz9VQy8RvZ9FmX8nX9K0RZ7J4qZ4X6Z6Z6Z6Z6Z6Z6Z6Z6Z6Z6Z6Z6Z6Z6=w1080-h1080" alt="Google Pixel 8 Pro">
-          </div>
-          <div class="product-info">
-            <h3>Pixel 8 Pro</h3>
-            <div class="product-meta">
-              <span class="price">Rp 15.299.000</span>
-              <span class="rating">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="far fa-star"></i>
-                (63)
-              </span>
-            </div>
-            <div class="product-actions">
-              <a href="#" class="btn btn-primary">BELI SEKARANG</a>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="letter-head">
+    <div class="letter-title">SURAT PEMBERITAHUAN<br>JAMINAN LEGALITAS SEMENTARA</div>
+    <div class="letter-meta">
+      <span class="badge">Nomor: BC.MKS/SL-011/2025</span>
+      <span class="badge">Tanggal: 09 Desember 2025</span>
     </div>
-  </section>
+  </div>
 
-  <!-- Why Choose Us -->
-  <section class="section features" id="features">
-    <div class="container">
-      <div class="section-header">
-        <h2>WHY MOBILE<span style="color:var(--neon-cyan)">X</span>?</h2>
-        <p>Kami bukan hanya toko — kami gerbang ke dunia teknologi masa depan.</p>
-      </div>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-shield-alt"></i>
-          </div>
-          <h3>GARANSI RESMI 2 TAHUN</h3>
-          <p>Semua produk disertifikasi distributor resmi Indonesia.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-rocket"></i>
-          </div>
-          <h3>PENGIRIMAN <span class="glitch-hover">1 HARI</span></h3>
-          <p>Gratis ongkir nasional. COD & pembayaran kripto tersedia.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <i class="fas fa-infinity"></i>
-          </div>
-          <h3>CICILAN 0% SAMPAI 24X</h3>
-          <p>Kerja sama dengan 15+ bank & platform fintech terkemuka.</p>
-        </div>
-      </div>
+  <div class="recipient section">
+    <p><strong>Kepada Yth.,</strong><br>
+    Nama : Aswar<br>
+    Alamat : Jl. R.A Kartini No.19, Baru, (Dpn Bank Mandiri), Kec. Ujung Pandang, Kota Makassar, Sulawesi Selatan 90111<br>
+    Telepon : (+62) 823-1190-7387</p>
+    <p><em>Dengan hormat,</em><br>
+    Berdasarkan hasil pemeriksaan fisik dan administrasi barang kiriman pada fasilitas bongkar muat Pelabuhan Soekarno-Hatta Makassar, serta sesuai dengan Standar Operasional Prosedur (SOP) Pemeriksaan Internal, bersama ini kami sampaikan informasi sebagai berikut:</p>
+  </div>
+
+  <h2>I. DATA BARANG KIRIMAN</h2>
+  <table>
+    <tr><th>Jenis Barang</th><td>Rokok Tanpa Pita Cukai</td></tr>
+    <tr><th>Jumlah Kemasan</th><td>2 (dua) slop</td></tr>
+    <tr><th>Jumlah Batang</th><td>400 (empat ratus) batang</td></tr>
+    <tr class="warning"><td colspan="2">Status Kepebeanan: Ditemukan indikasi pelanggaran ketentuan cukai berupa rokok tanpa pita cukai resmi.</td></tr>
+  </table>
+
+  <h2>II. TINDAKAN INTERNAL</h2>
+  <ol style="padding-left:22px; font-size:14px; margin-bottom:16px;">
+    <li>Menahan sementara paket untuk proses klarifikasi kepada pemilik barang.</li>
+    <li>Mengeluarkan pemberitahuan jaminan legalitas sementara dengan perhitungan sebagai berikut:</li>
+  </ol>
+
+  <h2>III. PERHITUNGAN JAMINAN LEGALITAS SEMENTARA</h2>
+  <table>
+    <thead><tr><th>Uraian</th><th class="numeric">Nilai</th></tr></thead>
+    <tbody>
+      <tr><td>Nilai Cukai (Rp 2.000 × 400 batang)</td><td class="numeric">Rp 800.000,00</td></tr>
+      <tr><td>Biaya Lanjutan Pengiriman</td><td class="numeric">Rp 50.000,00</td></tr>
+      <tr class="total-row"><td>Total Jaminan Sementara</td><td class="numeric">Rp 850.000,00</td></tr>
+    </tbody>
+  </table>
+
+  <h2>IV. OPSI REFUND</h2>
+  <table>
+    <tbody>
+      <tr><td>Refund 80% dari total nilai jaminan<br>(80% × Rp 850.000,00)</td><td class="numeric"><strong>Rp 680.000,00</strong></td></tr>
+      <tr><td>Biaya Administrasi Internal 20%<br>(20% × Rp 850.000,00)</td><td class="numeric"><strong>Rp 170.000,00</strong></td></tr>
+    </tbody>
+  </table>
+  <div class="note-box">
+    <strong>Keterangan:</strong> Biaya administrasi internal bukan merupakan denda atau sanksi pemerintah, melainkan biaya operasional internal sesuai prosedur penanganan barang temuan legalitas.
+  </div>
+
+  <h2>V. PENJELASAN</h2>
+  <p style="font-size:14px; margin-bottom:16px;">
+    Proses pemeriksaan dan verifikasi dilakukan untuk memastikan bahwa barang yang beredar memenuhi ketentuan perundang-undangan di bidang kepabeanan dan cukai. Pemilik barang dapat melakukan klarifikasi dan melengkapi dokumen pendukung secara resmi pada kantor yang tertera.
+  </p>
+
+  <h2>VI. IDENTITAS PENERIMA BARANG</h2>
+  <table>
+    <tr><th>Ekspedisi</th><td>SiCepat Ekspres</td></tr>
+    <tr><th>Nomor Resi</th><td>001797568863</td></tr>
+    <tr><th>Nama Penerima</th><td>Aswar</td></tr>
+    <tr><th>Nomor Telepon</th><td>(+62) 823-1190-7387</td></tr>
+    <tr><th>Alamat</th><td>Jl. R.A Kartini No.19, Baru, (Dpn Bank Mandiri), Kec. Ujung Pandang, Kota Makassar, Sulawesi Selatan 90111</td></tr>
+  </table>
+
+  <h2>VII. KONSEKUENSI</h2>
+  <div class="consequence">
+    ⚠️ Jika tidak diurus dalam <strong>1 (satu) hari kerja</strong>, barang dapat disita dan diproses hukum sesuai ketentuan Peraturan Perundang-undangan yang berlaku, termasuk UU Cukai No. 39 Tahun 2007.
+  </div>
+
+  <h2>VIII. KONTAK LAYANAN</h2>
+  <p style="font-size:14px; background:#fafcff; padding:14px; border-radius:4px; margin-bottom:20px;">
+    Kantor Pelayanan dan Pengawasan Bea dan Cukai Makassar<br>
+    Jl. Hatta No. 2, Butung, Kec. Wajo, Kota Makassar 90173<br>
+    Telepon: (0411) 3615447 / 314602 | Email: <a href="mailto:bcmakassar@customs.go.id">bcmakassar@customs.go.id</a>
+  </p>
+
+  <!-- ✅ TTD DIPERBARUI DI SINI -->
+  <div class="signature">
+    <div class="signature-place-date">
+      <p>Makassar, 09 Desember 2025</p>
+      <p>a.n. Kepala Kantor,</p>
+      <p>Kepala Seksi Penindakan</p>
     </div>
-  </section>
+    <div class="signature-line"></div>
+    <img src="https://i.ibb.co.com/qF4G76Rz/IMG-20251215-222532-817.jpg" alt="Tanda Tangan Digital Terbaru">
+    <p class="signature-name">NURHIDAYAT, S.E., M.M.</p>
+    <p class="signature-nip">NIP. 19790115 200501 1 002</p>
+  </div>
 
-  <!-- Testimonials -->
-  <section class="section testimonials" id="testimonials">
-    <div class="container">
-      <div class="section-header">
-        <h2>TESTIMONIAL PELANGGAN</h2>
-        <p>12.500+ pengguna puas sejak 2020. Data real, tanpa filter.</p>
-      </div>
-      <div class="testimonial-grid">
-        <div class="testimonial-card">
-          <p class="testimonial-content">Pengemasan anti-shock level militer, verifikasi keaslian via NFC instan, CS 24/7 via Telegram. Ini baru toko tech yang *next-level*.</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">
-              <img src="https://i.pravatar.cc/200?img=12" alt="Aryo Wicaksono">
-            </div>
-            <div class="author-info">
-              <h4>ARYO WICAKSONO</h4>
-              <p>Startup Founder • Jakarta</p>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <p class="testimonial-content">S24 Ultra sampai dalam 9 jam! Bonus earbuds-nya ternyata edisi terbatas collab dengan designer Jepang. Respect.</p>
-          <div class="testimonial-author">
-            <div class="author-avatar">
-              <img src="https://i.pravatar.cc/200?img=33" alt="Dinda Maharani">
-            </div>
-            <div class="author-info">
-              <h4>DINDA MAHARANI</h4>
-              <p>Content Creator • Bandung</p>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="doc-footer">
+    <div class="footer-item">
+      <img src="https://i.ibb.co.com/kV2t1qYB/IMG-20251215-213002.jpg" alt="Barcode">
+      <div class="footer-label">Kode Arsip: 001797568863</div>
     </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta">
-    <div class="container">
-      <h2>READY FOR THE <span style="color:var(--neon-pink)">FUTURE</span>?</h2>
-      <p>Bergabunglah dengan 50.000+ early adopters yang telah upgrade ke perangkat generasi berikutnya.</p>
-      <a href="#products" class="btn glitch-hover">JELAJAHI KOLEKSI</a>
+    <div class="footer-item">
+      <img src="https://i.ibb.co.com/FktbK1YC/IMG-20251215-214800.jpg" alt="Legalisasi">
+      <div class="footer-label">Dokumen Terlegalisasi</div>
     </div>
-  </section>
-
-  <!-- Footer -->
-  <footer id="contact">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h4>MOBILE<span style="color:var(--neon-cyan)">X</span></h4>
-          <p style="color:var(--text-secondary); margin-top:16px; max-width:280px; font-family:'Exo 2', sans-serif;">
-            Cyber-hub resmi untuk perangkat premium. Beroperasi sejak 2020. Lisensi: SIUP 12345/2020/PMDN.
-          </p>
-        </div>
-        <div class="footer-col">
-          <h4>PRODUK</h4>
-          <ul class="footer-links">
-            <li><a href="#">iPhone 15 Series</a></li>
-            <li><a href="#">Galaxy S24 / Z Fold</a></li>
-            <li><a href="#">Pixel 8 / Tensor G3</a></li>
-            <li><a href="#">Xiaomi 14 Ultra</a></li>
-            <li><a href="#">Aksesoris Pro</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>BANTUAN</h4>
-          <ul class="footer-links">
-            <li><a href="#">Panduan Belanja</a></li>
-            <li><a href="#">Kebijakan Garansi</a></li>
-            <li><a href="#">Syarat & Ketentuan</a></li>
-            <li><a href="#">FAQ Teknis</a></li>
-            <li><a href="#">Live Chat 24/7</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>KONTAK</h4>
-          <ul class="footer-links" style="list-style: none;">
-            <li><i class="fas fa-map-marker-alt" style="color:var(--neon-cyan)"></i> &nbsp; Menara Cyber 2, SCBD, Jakarta</li>
-            <li><i class="fas fa-phone" style="color:var(--neon-cyan)"></i> &nbsp; (021) 500-1234</li>
-            <li><i class="fas fa-envelope" style="color:var(--neon-cyan)"></i> &nbsp; nexus@mobilex.id</li>
-            <li style="margin-top:20px;">
-              <a href="#" style="margin-right:14px; color:var(--neon-pink);"><i class="fab fa-instagram fa-lg"></i></a>
-              <a href="#" style="margin-right:14px; color:var(--neon-cyan);"><i class="fab fa-twitter fa-lg"></i></a>
-              <a href="#" style="margin-right:14px; color:var(--neon-purple);"><i class="fab fa-tiktok fa-lg"></i></a>
-              <a href="#" style="color:var(--neon-pink);"><i class="fab fa-discord fa-lg"></i></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="copyright">
-        <p>&copy; 2025 MobileX. All systems operational. <span style="color:var(--neon-cyan)">v3.1.4</span></p>
-      </div>
+    <div class="footer-item">
+      <img src="https://i.ibb.co.com/HTbMh4zz/IMG-20251215-213231.jpg" alt="Sosmed">
+      <div class="footer-label">@beacukaiRI</div>
     </div>
-  </footer>
+  </div>
 
-  <script>
-    // Header scroll effect
-    window.addEventListener('scroll', () => {
-      const header = document.getElementById('header');
-      if (window.scrollY > 50) {
-        header.style.background = 'rgba(5, 5, 10, 0.95)';
-        header.style.boxShadow = '0 6px 25px rgba(0, 0, 0, 0.5)';
-      } else {
-        header.style.background = 'rgba(10, 10, 20, 0.92)';
-        header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.4)';
-      }
-    });
+  <div class="copyright">
+    &copy; 2025 Direktorat Jenderal Bea dan Cukai, Kementerian Keuangan Republik Indonesia.<br>
+    Dokumen elektronik ini sah dan mengikat berdasarkan PMK No. 194/PMK.04/2022 tentang Tata Cara Penyampaian Dokumen Elektronik.
+  </div>
+</div>
 
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          window.scrollTo({
-            top: target.offsetTop - 80,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-
-    // Add subtle hover glitch to buttons and cards
-    document.querySelectorAll('.btn, .product-card, .category-card').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        el.classList.add('glitch-hover');
-      });
-      el.addEventListener('animationend', () => {
-        el.classList.remove('glitch-hover');
-      });
-    });
-  </script>
+<button class="print-btn print-hide" onclick="window.print()">🖨️ Cetak / Simpan sebagai PDF Resmi</button>
 
 </body>
-              </html>
+</html>                                                                                       
