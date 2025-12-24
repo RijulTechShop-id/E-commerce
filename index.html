@@ -3,435 +3,254 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SURAT PEMBERITAHUAN - BEA CUKAI MAKASSAR</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+  <title>Nota Tagihan - Gudang Distributor R2 Nusantara</title>
   <style>
-    :root {
-      --bc-blue: #002B5C;
-      --bc-gold: #D4AF37;
-      --gray-900: #222;
-      --gray-700: #444;
-      --gray-500: #666;
-      --gray-300: #ddd;
-      --red: #c00;
-      --bg-light: #fafbff;
-      --border: #e0e0e0;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: 'Nunito', sans-serif;
-      color: var(--gray-900);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 30px;
+      padding: 40px;
+      background-color: #fff;
+      color: #333;
+      max-width: 850px;
       line-height: 1.6;
-      background-color: #f5f7fa;
-      padding: 15px;
+      border: 1px solid #ddd;
+      box-shadow: 0 0 12px rgba(0,0,0,0.08);
     }
-
-    .document {
-      width: 210mm;
-      min-height: 297mm;
-      margin: 0 auto;
-      background: white;
-      position: relative;
-      overflow: hidden;
-      padding: 25mm 20mm 30mm;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-
-    /* Watermark Besar */
-    .watermark-bg {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(-30deg);
-      opacity: 0.03;
-      z-index: 0;
-      pointer-events: none;
-      width: 600px;
-    }
-
-    @media print {
-      body { padding: 0; background: white; }
-      .document {
-        box-shadow: none;
-        padding: 25mm 20mm 30mm;
-      }
-      .watermark-bg, .print-hide { display: none !important; }
-      @page { size: A4; margin: 0; }
-    }
-
-    /* Emblem LEGALISASI di tengah atas — FOKUS UTAMA */
-    .legalisasi-badge {
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
-      width: 80px;
-      height: 80px;
+    .header {
       display: flex;
-      justify-content: center;
       align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #d9534f;
     }
-
-    .legalisasi-badge img {
-      width: 100%;
+    .logo {
+      width: 180px;
       height: auto;
-      object-fit: contain;
+      border: 1px solid #eee;
+      border-radius: 4px;
     }
-
-    /* Header: Logo Kiri & Kanan — SIMETRIS */
-    .header-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-top: 30px; /* Ruang untuk badge di atas */
-      margin-bottom: 10px;
+    .company-info {
+      flex-grow: 1;
     }
-
-    .logo-left, .logo-right {
-      width: 80px;
-      height: 80px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .logo-left img, .logo-right img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-    }
-
-    /* Judul Surat */
-    .title-container {
-      text-align: center;
-      margin: 10px 0 12px;
-    }
-
-    .title-main {
-      font-family: 'Merriweather', serif;
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--bc-blue);
-      line-height: 1.3;
-      margin-bottom: 4px;
-    }
-
-    .title-sub {
+    .company-name {
       font-size: 18px;
-      font-weight: 700;
-      color: var(--bc-blue);
-      margin-bottom: 12px;
+      font-weight: bold;
+      color: #d9534f;
+      margin: 0;
     }
-
-    .doc-meta {
+    .tagline {
+      font-size: 12px;
+      color: #666;
+      margin: 5px 0;
+    }
+    .contact {
+      font-size: 12px;
+      color: #555;
+      margin: 3px 0;
+    }
+    .note-header {
       display: flex;
       justify-content: space-between;
-      font-size: 14px;
-      color: var(--gray-700);
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid var(--bc-gold);
+      margin-bottom: 20px;
+      padding-top: 10px;
     }
-
-    /* Penerima */
-    .recipient-block {
-      margin: 20px 0;
-      padding: 16px;
-      border-left: 4px solid var(--bc-blue);
-      font-size: 14px;
-    }
-
-    .recipient-block p {
-      margin: 4px 0;
-    }
-
-    /* Section Title */
-    .section-title {
+    .note-title {
       font-size: 16px;
-      font-weight: 700;
-      color: var(--bc-blue);
-      margin: 24px 0 12px;
-      padding-bottom: 4px;
-      border-bottom: 2px solid var(--bc-gold);
+      font-weight: bold;
+      color: #333;
     }
-
-    /* Table Style */
+    .note-number {
+      font-size: 14px;
+      color: #555;
+    }
+    .customer-info {
+      background-color: #fafafa;
+      padding: 15px;
+      border: 1px solid #eee;
+      border-radius: 6px;
+      margin: 20px 0;
+    }
+    .section-title {
+      font-size: 15px;
+      font-weight: bold;
+      color: #333;
+      margin: 25px 0 10px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #eee;
+    }
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 12px 0;
-      font-size: 14px;
-      page-break-inside: avoid;
+      margin: 15px 0;
+      font-size: 12px;
     }
-
-    th, td {
-      padding: 10px 14px;
-      text-align: left;
-      border: 1px solid var(--border);
-    }
-
     th {
-      background: #f5f5f5;
-      font-weight: 600;
-      color: var(--gray-900);
-    }
-
-    .numeric {
-      text-align: right;
-      font-feature-settings: "tnum";
-      font-variant-numeric: tabular-nums;
-    }
-
-    tr.warning {
-      background: #fff8f8;
-    }
-
-    tr.warning td {
-      color: var(--red);
-      font-weight: 600;
-    }
-
-    /* Konsekuensi */
-    .consequence {
-      background: #fff0f0;
-      border-left: 4px solid var(--red);
-      padding: 16px;
-      margin: 20px 0;
-      font-weight: 600;
-      color: var(--red);
-    }
-
-    .consequence-icon {
-      color: var(--red);
+      background-color: #f5f5f5;
       font-weight: bold;
-      margin-right: 8px;
+      text-align: left;
+      padding: 10px 12px;
+      border: 1px solid #ddd;
     }
-
-    /* Footer Signature & QR */
-    .footer-section {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid var(--gray-300);
+    td {
+      padding: 10px 12px;
+      border: 1px solid #ddd;
     }
-
-    .qr-box {
-      width: 180px;
-      border: 1px solid var(--gray-300);
-      padding: 12px;
-      text-align: center;
-    }
-
-    .qr-box img {
-      width: 100%;
-      max-height: 200px;
-      object-fit: contain;
-      margin-bottom: 8px;
-    }
-
-    .qr-label {
-      font-size: 10px;
-      color: var(--gray-500);
-    }
-
-    .signature-area {
-      text-align: right;
-      flex: 1;
-      padding-left: 30px;
-    }
-
-    .signature-date {
-      margin-bottom: 20px;
-      font-size: 15px;
-    }
-
-    .signature-name {
-      font-weight: 600;
-      font-size: 16px;
-      margin-top: 40px;
-    }
-
-    .signature-nip {
+    .total-row {
+      font-weight: bold;
       font-size: 14px;
-      color: var(--gray-700);
+      text-align: right;
+      padding-top: 15px;
     }
-
-    /* HANYA TTD ASLI — TANPA STEMPSEL ATAU GAMBAR LAIN */
-    .signature-img {
-      height: 150px;
-      object-fit: contain;
-      margin-top: 8px;
-      border: none;
-      background: transparent;
-    }
-
-    /* Copyright */
-    .copyright {
-      margin-top: 20px;
-      text-align: center;
-      font-size: 11px;
-      color: var(--gray-500);
-      line-height: 1.5;
-      border-top: 1px solid var(--gray-300);
-      padding-top: 12px;
-    }
-
-    /* Print Button */
-    .print-btn {
-      display: block;
-      margin: 20px auto;
-      padding: 10px 24px;
-      background: var(--bc-blue);
-      color: white;
-      border: none;
+    .payment-note {
+      background-color: #fff8e1;
+      padding: 15px;
+      border-left: 4px solid #ffc107;
+      margin: 20px 0;
+      font-size: 12px;
       border-radius: 4px;
-      font-weight: 600;
-      cursor: pointer;
+    }
+    .bank-info {
+      background-color: #e8f5e9;
+      padding: 15px;
+      border-left: 4px solid #4caf50;
+      margin: 20px 0;
+      font-size: 12px;
+      border-radius: 4px;
+    }
+    .signature-box {
+      margin-top: 40px;
+      text-align: center;
+      padding: 20px 0;
+    }
+    .ttd-image {
+      width: 200px;
+      height: auto;
+      margin: 10px auto;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .signature-text {
+      font-size: 12px;
+      color: #555;
+      margin: 5px 0;
+    }
+    .footer {
+      font-size: 10px;
+      text-align: center;
+      color: #777;
+      margin-top: 30px;
+      padding-top: 10px;
+      border-top: 1px solid #eee;
+    }
+    .note {
+      font-style: italic;
+      color: #555;
+      font-size: 11px;
+      text-align: center;
+      margin-top: 5px;
     }
   </style>
 </head>
 <body>
 
-<div class="document">
-
-  <!-- Watermark -->
-  <img src="https://i.ibb.co.com/p6PVKLdj/IMG-20251209-083323.jpg" alt="Watermark Bea Cukai" class="watermark-bg">
-
-  <!-- ✅ EMBLEM LEGALISASI DI TENGAH ATAS — UPDATE KE LOGO BARU -->
-  <div class="legalisasi-badge">
-    <img src="https://i.ibb.co.com/FktbK1YC/IMG-20251215-214800.jpg" alt="Stempel Legalisasi">
-  </div>
-  <!-- Header Top: Logo Kiri & Kanan — SIMETRIS 80x80 -->
-  <div class="header-top">
-    <div class="logo-left">
-      <img src="https://i.ibb.co.com/KjyDDGss/IMG-20251209-070009.jpg" alt="Logo Bea Cukai">
-    </div>
-    <div class="logo-right">
-      <img src="https://i.ibb.co.com/tPxTpvRN/IMG-20251209-070039.jpg" alt="Logo Kemenkeu">
+  <!-- HEADER -->
+  <div class="header">
+    <img src="https://i.ibb.co.com/v6BZG5ST/IMG-20251224-122739.jpg" alt="Logo Gudang Distributor R2 Nusantara" class="logo">
+    <div class="company-info">
+      <div class="company-name">GUDANG DISTRIBUTOR R2 NUSANTARA</div>
+      <div class="tagline">Official Tobacco Distribution Partner</div>
+      <div class="contact">Desa Karangduren, Kec. Pakisaji, Kab. Malang, Jawa Timur 65162</div>
+      <div class="contact">📞 0857-1590-5079 | 📧 r2distributor.nusantara@gmail.com</div>
     </div>
   </div>
-  <!-- Judul Surat -->
-  <div class="title-container">
-    <div class="title-main">SURAT PEMBERITAHUAN</div>
-    <div class="title-sub">JAMINAN LEGALITAS SEMENTARA</div>
+
+  <!-- NOTE HEADER -->
+  <div class="note-header">
+    <div class="note-title">NOTA TAGIHAN (BON GUDANG)</div>
+    <div class="note-number"><strong>No. Bon:</strong> R2N/12/241225<br><strong>Tanggal:</strong> 24 Desember 2025</div>
   </div>
 
-  <!-- Nomor & Tanggal -->
-  <div class="doc-meta">
-    <span>Nomor: BC.MKS/SL-011/2025</span>
-    <span>Tanggal: 09 Desember 2025</span>
+  <!-- CUSTOMER INFO -->
+  <div class="customer-info">
+    <strong>Ditagihkan Kepada:</strong><br>
+    <strong>Nama</strong>      : Id<br>
+    <strong>No. HP</strong>    : 0856-0783-9736<br>
+    <strong>Alamat</strong>    : Kp. Limusnunggal RT 01/RW 05, Desa Ciherang Pondok,<br>
+                Kec. Caringin, Kab. Bogor, Jawa Barat 16730
   </div>
 
-  <!-- Penerima -->
-  <div class="recipient-block">
-    <p><strong>Kepada Yth.,</strong></p>
-    <p>Nama : Aswar</p>
-    <p>Alamat : Jl. R.A Kartini No.19, Baru, (Dpn Bank Mandiri), Kec. Ujung Pandang, Kota Makassar, Sulawesi Selatan 90111</p>
-    <p>Telepon : (+62) 823-1190-7387</p>
-    <p><em>Dengan hormat,</em></p>
-    <p>Berdasarkan hasil pemeriksaan fisik dan administrasi barang kiriman pada fasilitas bongkar muat Pelabuhan Soekarno-Hatta Makassar, serta sesuai dengan Standar Operasional Prosedur (SOP) Pemeriksaan Internal, bersama ini kami sampaikan informasi sebagai berikut:</p>
-  </div>
-
-  <!-- I. DATA BARANG KIRIMAN -->
-  <h2 class="section-title">I. DATA BARANG KIRIMAN</h2>
-  <table>
-    <tr><th>Jenis Barang</th><td>Rokok Tanpa Pita Cukai</td></tr>
-    <tr><th>Jumlah Kemasan</th><td>2 (dua) slop</td></tr>
-    <tr><th>Jumlah Batang</th><td>400 (empat ratus) batang</td></tr>
-    <tr class="warning"><td colspan="2">Status Kepebeanan: Ditemukan indikasi pelanggaran ketentuan cukai berupa rokok tanpa pita cukai resmi.</td></tr>
-  </table>
-
-  <!-- II. PERHITUNGAN JAMINAN LEGALITAS SEMENTARA -->
-  <h2 class="section-title">III. PERHITUNGAN JAMINAN LEGALITAS SEMENTARA</h2>
+  <!-- ITEM TABLE -->
+  <div class="section-title">RINCIAN BARANG</div>
   <table>
     <thead>
-      <tr><th>Uraian</th><th class="numeric">Nilai</th></tr>
+      <tr>
+        <th>No</th>
+        <th>Nama Barang</th>
+        <th>Jumlah</th>
+        <th>Satuan</th>
+        <th>Harga per Slop</th>
+        <th>Total</th>
+      </tr>
     </thead>
     <tbody>
-      <tr><td>Nilai Cukai (Rp 2.000 × 400 batang)</td><td class="numeric">Rp 800.000,00</td></tr>
-      <tr><td>Biaya Lanjutan Pengiriman</td><td class="numeric">Rp 50.000,00</td></tr>
-      <tr><th>Total Jaminan Sementara</th><td class="numeric">Rp 850.000,00</td></tr>
+      <tr>
+        <td>1</td>
+        <td>Rokok Smith Hijau</td>
+        <td>50</td>
+        <td>Slop</td>
+        <td>Rp75.000</td>
+        <td>Rp3.750.000</td>
+      </tr>
     </tbody>
   </table>
 
-  <!-- III. OPSI REFUND -->
-  <h2 class="section-title">IV. OPSI REFUND</h2>
-  <table>
-    <tbody>
-      <tr><td>Refund 80% dari total nilai jaminan<br>(80% × Rp 850.000,00)</td><td class="numeric">Rp 680.000,00</td></tr>
-      <tr><td>Biaya Administrasi Internal 20%<br>(20% × Rp 850.000,00)</td><td class="numeric">Rp 170.000,00</td></tr>
-    </tbody>
-  </table>
-  <div class="note-box" style="margin:16px 0; padding:12px; background:#f9f9f9; border-left:4px solid #ccc;">
-    <strong>Keterangan:</strong> Biaya administrasi internal bukan merupakan denda atau sanksi pemerintah, melainkan biaya operasional internal sesuai prosedur penanganan barang temuan legalitas.
+  <div class="total-row">
+    <strong>TOTAL TAGIHAN</strong><br>
+    Rp3.750.000,00<br>
+    <em>(Tiga Juta Tujuh Ratus Lima Puluh Ribu Rupiah)</em>
   </div>
 
-  <!-- IV. PENJELASAN -->
-  <h2 class="section-title">V. PENJELASAN</h2>
-  <p style="font-size:14px; margin-bottom:16px;">
-    Proses pemeriksaan dan verifikasi dilakukan untuk memastikan bahwa barang yang beredar memenuhi ketentuan perundang-undangan di bidang kepabeanan dan cukai. Pemilik barang dapat melakukan klarifikasi dan melengkapi dokumen pendukung secara resmi pada kantor yang tertera.
-  </p>
-
-  <!-- V. IDENTITAS PENERIMA BARANG -->
-  <h2 class="section-title">VI. IDENTITAS PENERIMA BARANG</h2>
-  <table>
-    <tr><th>Ekspedisi</th><td>SiCepat Ekspres</td></tr>
-    <tr><th>Nomor Resi</th><td>001797568863</td></tr>
-    <tr><th>Nama Penerima</th><td>Aswar</td></tr>
-    <tr><th>Nomor Telepon</th><td>(+62) 823-1190-7387</td></tr>
-    <tr><th>Alamat</th><td>Jl. R.A Kartini No.19, Baru, (Dpn Bank Mandiri), Kec. Ujung Pandang, Kota Makassar, Sulawesi Selatan 90111</td></tr>
-  </table>
-
-  <!-- VI. KONSEKUENSI -->
-  <h2 class="section-title">VII. KONSEKUENSI</h2>
-  <div class="consequence">
-    <span class="consequence-icon">⚠️</span>
-    Jika tidak diurus dalam <strong>1 (satu) hari kerja</strong>, barang dapat disita dan diproses hukum sesuai ketentuan Peraturan Perundang-undangan yang berlaku, termasuk UU Cukai No. 39 Tahun 2007.
+  <!-- PAYMENT NOTE -->
+  <div class="payment-note">
+    <strong>MEKANISME PEMBAYARAN</strong><br>
+    📌 Khusus transaksi perdana – skema fair & aman:<br>
+    - Barang dikirim terlebih dahulu dari gudang.<br>
+    - Pembayaran dilakukan setelah nomor resi ekspedisi resmi diterbitkan.<br>
+    - Nomor resi akan dikirim via WhatsApp/SMS untuk verifikasi.<br>
+    - Wajib lunas maksimal 1x24 jam setelah resi diterima.<br><br>
+    ❌ Bukan COD<br>
+    ❌ Tidak perlu transfer di muka<br>
+    ✅ Hanya bayar setelah resi keluar & bisa dicek
   </div>
 
-  <!-- VII. KONTAK LAYANAN -->
-  <h2 class="section-title">VIII. KONTAK LAYANAN</h2>
-  <p style="font-size:14px; margin-bottom:16px;">
-    Kantor Pelayanan dan Pengawasan Bea dan Cukai Makassar<br>
-    Jl. Hatta No. 2, Butung, Kec. Wajo, Kota Makassar 90173<br>
-    Telepon: (0411) 3615447 / 314602 | Email: <a href="mailto:bcmakassar@customs.go.id">bcmakassar@customs.go.id</a>
-  </p>
-
-  <!-- Footer: QR Code + HANYA TTD ASLI -->
-  <div class="footer-section">
-    <div class="qr-box">
-      <img src="https://i.ibb.co.com/kV2t1qYB/IMG-20251215-213002.jpg" alt="QR Code Verifikasi">
-      <div class="qr-label">QR Code Standar Pembayaran Nasional</div>
-    </div>
-    <div class="signature-area">
-      <div class="signature-date">Makassar, 09 Desember 2025</div>
-      <div>a.n. Kepala Kantor,</div>
-      <div>Kepala Seksi Penindakan</div>
-      <!-- ✅ HANYA TTD ASLI — TANPA STEMPSEL -->
-      <img src="https://i.ibb.co.com/qF4G76Rz/IMG-20251215-222532-817.jpg" alt="Tanda Tangan Asli" class="signature-img">
-      <div class="signature-name">NURHIDAYAT, S.E., M.M.</div>
-      <div class="signature-nip">NIP. 19790115 200501 1 002</div>
-    </div>
+  <!-- BANK INFO -->
+  <div class="bank-info">
+    <strong>REKENING MITRA GUDANG</strong><br>
+    <strong>Bank Aladin Syariah</strong><br>
+    No. Rekening: <strong>508 368 74280</strong><br>
+    a.n. <strong>Sandi Firmansah</strong><br><br>
+    📲 Konfirmasi bukti transfer WA ke: <strong>0857-1590-5079</strong><br>
+    <em>(Wajib – untuk arsip & validasi pembayaran)</em>
   </div>
 
-  <!-- Copyright -->
-  <div class="copyright">
-    © 2025 Direktorat Jenderal Bea dan Cukai, Kementerian Keuangan Republik Indonesia.<br>
-    Dokumen elektronik ini sah dan mengikat berdasarkan PMK No. 194/PMK.04/2022 tentang Tata Cara Penyampaian Dokumen Elektronik.
+  <!-- SIGNATURE -->
+  <div class="signature-box">
+    <p>Malang, 24 Desember 2025</p>
+    <p><strong>Yang Membuat Pernyataan,</strong></p>
+    <img src="https://i.ibb.co.com/xtQNzjP8/IMG-20251224-122113.jpg" alt="Tanda Tangan Dewi Lestari" class="ttd-image">
+    <div class="signature-text">(Dewi Lestari)</div>
+    <div class="signature-text">Kepala Administrasi & Keuangan</div>
+    <div class="signature-text">Gudang Distributor R2 Nusantara</div>
   </div>
 
-</div>
+  <!-- FOOTER -->
+  <div class="footer">
+    Nota ini merupakan dokumen resmi penagihan dari Gudang Distributor R2 Nusantara.<br>
+    Diterbitkan secara digital pada 24 Desember 2025.
+  </div>
 
-<!-- Print Button -->
-<button class="print-btn print-hide" onclick="window.print()">🖨️ Cetak / Simpan sebagai PDF</button>
+  <div class="note">✅ Mitra Distribusi Profesional | Transparan | Aman</div>
 
 </body>
 </html>
